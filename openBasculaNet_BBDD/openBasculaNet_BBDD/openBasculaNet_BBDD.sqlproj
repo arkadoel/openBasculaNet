@@ -79,5 +79,11 @@
     <Build Include="obn\Tables\HISTORICOS.sql" />
     <Build Include="obn\Tables\PRODUCTOS.sql" />
     <Build Include="obn\Tables\VEHICULOS.sql" />
+    <Build Include="obn\Tables\AspNetRoles.sql" />
+    <Build Include="obn\Tables\_MigrationHistory.sql" />
+    <Build Include="obn\Tables\AspNetUserClaims.sql" />
+    <Build Include="obn\Tables\AspNetUserLogins.sql" />
+    <Build Include="obn\Tables\AspNetUserRoles.sql" />
+    <Build Include="obn\Tables\AspNetUsers.sql" />
   </ItemGroup>
 </Project>
