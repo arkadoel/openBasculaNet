@@ -71,4 +71,13 @@
   <ItemGroup>
     <None Include="Scripts\PreDeployScripts\InicialScript.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="obn\Tables\Empresas.sql" />
+    <Build Include="obn\Tables\TRANSITOS_ACTUALES.sql" />
+    <Build Include="obn\Tables\CONDUCTORES.sql" />
+    <Build Include="obn\Tables\CONFIGURACIONES.sql" />
+    <Build Include="obn\Tables\HISTORICOS.sql" />
+    <Build Include="obn\Tables\PRODUCTOS.sql" />
+    <Build Include="obn\Tables\VEHICULOS.sql" />
+  </ItemGroup>
 </Project>

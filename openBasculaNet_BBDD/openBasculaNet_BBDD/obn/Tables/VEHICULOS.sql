@@ -1,0 +1,10 @@
+﻿CREATE TABLE [obn].[VEHICULOS] (
+    [ID_VEHICULO]  INT          NOT NULL,
+    [MATRICULA]    VARCHAR (50) NULL,
+    [ID_EMPRESA]   INT          NULL,
+    [ID_CONDUCTOR] INT          NULL,
+    [FECHA_ALTA]   DATE         NULL,
+    [FECHA_BAJA]   DATE         NULL,
+    PRIMARY KEY CLUSTERED ([ID_VEHICULO] ASC)
+);
+

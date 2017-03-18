@@ -1,0 +1,6 @@
+﻿CREATE TABLE [obn].[CONFIGURACIONES] (
+    [ID]        INT          NOT NULL,
+    [PARAMETRO] VARCHAR (50) NULL,
+    [VALOR]     VARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC)
+);
