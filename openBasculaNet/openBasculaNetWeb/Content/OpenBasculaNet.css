@@ -1,0 +1,211 @@
+﻿html {
+    margin-left: 20px !important;
+}
+
+.navbar-brand {
+    background-color: #80cbc4;
+    color: black;
+}
+
+
+.navbar-inverse .navbar-brand {
+    color: black;
+}
+
+.navbar-inverse {
+    background-color: #80cbc4;
+    color: black;
+}
+
+    .navbar-inverse .navbar-nav > li > a {
+        color: black !important;
+    }
+
+
+h1, h2, h3, h4, h5 {
+    color: #00796b !important;
+    font-weight: bold !important;
+}
+
+input {
+    text-align: center;
+}
+
+    input[type="text"] {
+        min-height: 34px !important;
+        border-radius: 4px;
+        border: 1px solid #bdbdbd;
+    }
+
+textarea {
+    border-radius: 4px;
+    border: 1px solid #bdbdbd;
+}
+
+.btn-openBascula {
+    background-color: #00796b !important;
+    font-weight: bold !important;
+}
+
+.btn-openBascula-red {
+    background-color: white !important;
+    font-weight: bold !important;
+    color: #b71c1c;
+    animation-play-state: paused;
+}
+
+    .btn-openBascula-red:hover {
+        background-color: #b71c1c !important;
+        font-weight: bold !important;
+        color: white;
+        animation: marquee 10s linear infinite;
+    }
+
+
+/* Make it move */
+@keyframes marquee {
+    0% {
+        transform: scale(1, 1);
+    }
+
+    40% {
+        transform: scale(0.01, 0.01);
+    }
+
+    100% {
+        transform: scale(0, 0);
+    }
+}
+
+.verfichaIcon {
+    height: 48px !important;
+    width: 48px !important;
+    margin-right: 15px !important;
+    font-size: 24px !important;
+    vertical-align: middle !important;
+    color: #00796b !important;
+}
+/*Buscador de pacientes*/
+.buscador-pacientes {
+    background-color: #b2dfdb;
+    padding: 5px;
+    padding-left: 15px;
+}
+
+.table > thead {
+    background-color: #80cbc4;
+    color: black;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background-color: #00796b;
+}
+
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+    background-color: #00796b;
+}
+/*End Buscador de pacientes*/
+/*Ficha paciente*/
+.div-ficha-paciente {
+    border: 3px solid #00695c;
+    border-style: double;
+    border-radius: 5px;
+}
+
+.margin-arriba {
+    margin-top: 5px;
+}
+/*End Ficha paciente*/
+
+.border_rojo {
+    border: 1px solid #00796b;
+    padding: 5px !important;
+    width: 50%;
+}
+
+.bigSelectPicker {
+    width: 400px !important;
+    height: 125px !important;
+    max-width: 401px !important;
+    max-height: 125px !important;
+}
+
+    .bigSelectPicker > .dropdown-toggle {
+        white-space: normal !important;
+        width: 400px !important;
+        height: 125px !important;
+        max-width: 401px !important;
+        max-height: 125px !important;
+        text-align: left;
+    }
+
+    .bigSelectPicker > .dropdown-menu > li > a > p {
+        white-space: normal;
+        max-width: 401px !important;
+        text-align: left;
+    }
+
+.div-tratamient-antesREA {
+    margin: 10px;
+    padding: 5px;
+    border: 3px solid #00695c;
+    border-style: double;
+    border-radius: 5px;
+    background-color: #efebe9;
+}
+
+.div-tratamient-enREA {
+    margin: 10px;
+    padding: 5px;
+    border: 3px solid #00695c;
+    border-style: double;
+    border-radius: 5px;
+    background-color: #e8f5e9;
+}
+
+
+.tooltip-inner {
+    background-color: #00796b !important;
+    font-size: 14px;
+}
+
+.tooltip.bottom .tooltip-arrow {
+    border-bottom-color: #00796b !important;
+}
+
+.help-page .sample-header {
+    background-color: #80cbc4 !important;
+    color: black !important;
+}
+
+.btn-api-help {
+    font-size: 16px !important;
+    color: white !important;
+    font-weight: normal !important;
+}
+
+.datepicker {
+    max-width: 300px !important;
+}
+
+#ui-datepicker-div {
+    -webkit-box-shadow: -1px 9px 33px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 9px 33px 0px rgba(0,0,0,0.75);
+    box-shadow: -1px 9px 33px 0px rgba(0,0,0,0.75);
+}
+
+.input-group {
+    max-width: 300px !important;
+}
+
+.openBascula-navbar-menu-dropdown {
+    background-color: #80cbc4 !important;
+}
+
+.popover {
+    max-width: 400px !important;
+}
+
+input, select, textarea{
+    max-width: 100% !important;
+}

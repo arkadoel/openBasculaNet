@@ -26,5 +26,10 @@ namespace openBasculaNetWeb.Controllers
 
             return View();
         }
+
+        public ActionResult Principal()
+        {
+            return View();
+        }
     }
 }
