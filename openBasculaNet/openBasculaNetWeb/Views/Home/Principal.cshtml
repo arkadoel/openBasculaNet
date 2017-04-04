@@ -5,69 +5,98 @@
 }
 
 <h2></h2>
-<div class="row col-md-12">
-    <button type="button" class="col-md-2 btn btn-default "><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>GUARDAR</button>
-    <button type="button" class="col-md-2 btn btn-default "><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>EN TRANSITO</button>
+<div class="row  margin-arriba">
+    <button type="button" class="col-md-2 btn btn-default btn-openBascula  "><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>&nbsp; GUARDAR</button>
+    
+    <button type="button" class="col-md-offset-1 col-md-2 btn btn-default btn-openBascula "><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>&nbsp; EN TRANSITO</button>
 </div>
 <hr />
-<div class="row col-md-12">
+<div class="row  margin-arriba">
     <label class="col-md-2">CABINA</label>
-    <input type="text" class="col-md-3" id="txtCabina" />
+    <input type="text" class="col-md-3 text-uppercase" id="txtCabina" />
     <label class="col-md-offset-2 col-md-2">REMOLQUE</label>
-    <input type="text" class="col-md-3" id="txtRemolque" />
+    <input type="text" class="col-md-3 text-uppercase" id="txtRemolque" />
 </div>
-<div class="row col-md-12">
+<div class="row  margin-arriba">
     <label class="col-md-offset-7 col-md-2">ENTRADA</label>
+    <div id="dtp_fecha_entrada" class='input-group date col-md-3' data-dbvalue="null">
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+        <input type='text' class="datepicker form-control" id="dtp_fecha_entrada_value" />
+    </div>
 </div>
-<div class="row col-md-12">
+<div class="row  margin-arriba">
     <label class="col-md-2">PRODUCTO</label>
-    <input type="text" class="col-md-9" id="txtProducto" />
-    <button type="button" class="col-md-1 btn btn-default "><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <input type="text" class="col-md-9 text-left" id="txtProducto" />
+    <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
-<div class="row col-md-12">
+<div class="row  margin-arriba">
     <label class="col-md-2">CLIENTE</label>
     <input type="text" class="col-md-9" id="txtCLIENTE" />
-    <button type="button" class="col-md-1 btn btn-default "><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
-<div class="row col-md-12">
+<div class="row  margin-arriba">
     <label class="col-md-2">PROVEEDOR</label>
     <input type="text" class="col-md-9" id="txtPROVEEDOR" />
-    <button type="button" class="col-md-1 btn btn-default "><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
-<div class="row col-md-12">
+<div class="row  margin-arriba">
     <label class="col-md-2">AGENCIA</label>
     <input type="text" class="col-md-9" id="txtAGENCIA" />
-    <button type="button" class="col-md-1 btn btn-default "><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
-<div class="row col-md-12">
+<div class="row  margin-arriba">
     <label class="col-md-2">POSEEDOR</label>
     <input type="text" class="col-md-9" id="txtPOSEEDOR" />
-    <button type="button" class="col-md-1 btn btn-default "><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
-<div class="row col-md-12">
+<div class="row  margin-arriba">
     <label class="col-md-2">CONDUCTOR</label>
     <input type="text" class="col-md-9" id="txtCONDUCTOR" />
-    <button type="button" class="col-md-1 btn btn-default "><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
-<div class="row col-md-12">
+<div class="row  margin-arriba">
     <label class="col-md-2">ORIGEN</label>
     <input type="text" class="col-md-9" id="txtORIGEN" />
-    <button type="button" class="col-md-1 btn btn-default "><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
-<div class="row col-md-12">
+<div class="row  margin-arriba">
     <label class="col-md-2">DESTINO</label>
     <input type="text" class="col-md-9" id="txtDESTINO" />
-    <button type="button" class="col-md-1 btn btn-default "><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
-<div class="row col-md-12">
+<div class="row  margin-arriba">
     <label class="col-md-2">kg. ENTRADA</label>
-    <input type="text" class="col-md-9" id="txtPesoEntrada" />    
+    <input type="text" class="col-md-3" id="txtPesoEntrada" />    
 </div>
-<div class="row col-md-12">
+<div class="row  margin-arriba">
     <label class="col-md-2">kg. SALIDA</label>
-    <input type="text" class="col-md-9" id="txtPesoSalida" />    
+    <input type="text" class="col-md-3" id="txtPesoSalida" />    
 </div>
-<div class="row col-md-12">
+<div class="row  margin-arriba">
     <label class="col-md-2">NETO</label>
-    <input type="text" class="col-md-9" id="txtPesoNeto" />
+    <input type="text" class="col-md-3" id="txtPesoNeto" />
 </div>
+
+<script type="text/javascript">
+        var ESTADO_GUARDADO = "FIN";
+
+        window.onload = thisEndLoad;
+        function thisEndLoad() {
+           
+
+            /*iniciamos el resto de valores*/
+            $('[id*="dtp_"]').each(function () {
+                if ($(this).attr('id').indexOf('_value') == -1) {
+                    var idFecha = '#' + $(this).attr('id');
+                    // $(idFecha).data("DateTimePicker").locale('es');
+                    if ($(idFecha).data('dbvalue') !== '') {
+                        var fecha = dateOrNull($(idFecha).data('dbvalue'));
+                        setFechaPara(idFecha, fecha);
+                    }
+                    else setFechaPara(idFecha, null);
+                }
+            });
+        }
+</script>
