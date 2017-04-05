@@ -23,10 +23,8 @@
                 @Html.ActionLink("OpenBasculaNet", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Principal", "Principal", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <ul class="nav navbar-nav">                    
+                    <li>@Html.ActionLink("Contacta", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -40,6 +38,86 @@
             <p>&copy; @DateTime.Now.Year - OpenBasculaNet</p>
         </footer>
     </div>
+
+    <!-- #region MODALES -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="margin: 0 auto;">
+        <div class="modal-dialog" role="document" style="width: 98%; height: 98%; max-width: 1170px; max-height: 98%;">
+            <div class="modal-content" style="width: 98%; height: 98%; max-width: 1170px; max-height: 98%;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
+                </div>
+                <div class="modal-body" style="height:87%; padding: 0px;">
+                    <iframe id="myModalURL" frameborder="0" style="height: 100%; width: 100%; margin: 0;"></iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" id="btnMyModalAceptar" class="btn btn-primary">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModalMensajes" tabindex="-1" role="dialog" aria-labelledby="myModalMensajesTitle">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalMensajesTitle"></h4>
+                </div>
+                <div class="modal-body">
+                    <span class="glyphicon glyphicon-info-sign" style="font-size: 36px; color: #00838f;"></span>
+                    <label id="myModalMensajesMensaje"></label>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" id="btnMyModalMensajesAceptar" class="btn btn-primary">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModalMensajesError" tabindex="-1" role="dialog" aria-labelledby="myModalMensajesErrorTitle">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalMensajesErrorTitle"></h4>
+                </div>
+                <div class="modal-body">
+                    <span class="glyphicon glyphicon-bell" style="font-size: 36px; color: darkred;"></span>
+                    <label id="myModalMensajesErrorMensaje"></label>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" id="btnMyModalErrorAceptar" class="btn btn-primary">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myWindow" tabindex="-1" role="dialog" aria-labelledby="myWindowLabel">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myWindowLabel">Window title</h4>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion //MODALES -->
+
+    <input type="hidden" id="hdferrores" value='@Session["errores"]' />
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryui")
@@ -60,7 +138,7 @@
                 dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
                 dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
                 weekHeader: 'Sm',
-                dateFormat: 'dd/mm/yy HH:mm:ss',
+                dateFormat: 'dd/mm/yy ',
                 timeFormat: 'HH:mm:ss',
                 showTime: true,
                 changeMonth: false,

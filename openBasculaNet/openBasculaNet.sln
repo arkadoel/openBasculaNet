@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "openBasculaNet.BusinessLogi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "openBasculaNetWeb", "openBasculaNetWeb\openBasculaNetWeb.csproj", "{5384F6B4-C92F-40BC-9B84-FF42D5CC62F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{300DB324-60AF-4DB7-8633-5DD2918F42DE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{5384F6B4-C92F-40BC-9B84-FF42D5CC62F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5384F6B4-C92F-40BC-9B84-FF42D5CC62F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5384F6B4-C92F-40BC-9B84-FF42D5CC62F7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{300DB324-60AF-4DB7-8633-5DD2918F42DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{300DB324-60AF-4DB7-8633-5DD2918F42DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{300DB324-60AF-4DB7-8633-5DD2918F42DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{300DB324-60AF-4DB7-8633-5DD2918F42DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

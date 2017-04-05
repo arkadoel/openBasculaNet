@@ -22,7 +22,7 @@ namespace openBasculaNetWeb.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Datos de contacto:";
 
             return View();
         }

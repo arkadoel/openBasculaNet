@@ -49,86 +49,85 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AspNetRoles.cs">
+    <Compile Include="DataAccess\DB.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Structures\AspNetRoles.cs">
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="AspNetUserClaims.cs">
+    <Compile Include="Structures\AspNetUserClaims.cs">
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="AspNetUserLogins.cs">
+    <Compile Include="Structures\AspNetUserLogins.cs">
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="AspNetUsers.cs">
+    <Compile Include="Structures\AspNetUsers.cs">
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="CONDUCTORES.cs">
+    <Compile Include="Structures\CONDUCTORES.cs">
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="CONFIGURACIONES.cs">
+    <Compile Include="Structures\CONFIGURACIONES.cs">
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="C__MigrationHistory.cs">
+    <Compile Include="Structures\C__MigrationHistory.cs">
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Empresas.cs">
+    <Compile Include="Structures\Empresas.cs">
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="HISTORICOS.cs">
+    <Compile Include="Structures\HISTORICOS.cs">
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModeloDatos.Context.cs">
+    <Compile Include="Structures\ModeloDatos.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModeloDatos.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModeloDatos.cs">
+    <Compile Include="Structures\ModeloDatos.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModeloDatos.Designer.cs">
+    <Compile Include="Structures\ModeloDatos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModeloDatos.edmx</DependentUpon>
     </Compile>
-    <Compile Include="PRODUCTOS.cs">
+    <Compile Include="Structures\PRODUCTOS.cs">
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TRANSITO_ACTUALES.cs">
+    <Compile Include="Structures\TRANSITO_ACTUALES.cs">
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="VEHICULOS.cs">
+    <Compile Include="Structures\VEHICULOS.cs">
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="ModeloDatos.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModeloDatos.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="ModeloDatos.edmx.diagram">
+    <None Include="packages.config" />
+    <EntityDeploy Include="Structures\ModeloDatos.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModeloDatos.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Structures\ModeloDatos.edmx.diagram">
       <DependentUpon>ModeloDatos.edmx</DependentUpon>
     </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModeloDatos.Context.tt">
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Structures\ModeloDatos.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModeloDatos.Context.cs</LastGenOutput>
       <DependentUpon>ModeloDatos.edmx</DependentUpon>
+      <LastGenOutput>ModeloDatos.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ModeloDatos.tt">
+    <Content Include="Structures\ModeloDatos.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModeloDatos.edmx</DependentUpon>
       <LastGenOutput>ModeloDatos.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
