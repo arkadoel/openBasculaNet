@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+@{ 
+    ViewBag.Title = "OpenBasculaNet";
+ }
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/openBasculaDatePicker.css" />
+</head>
+<body>
+    <div class=" body-content">
+        @*<div id="spinner" class="col-md-2" style="position:absolute; float:initial; background-color: white; top: 0; margin: 0 auto; ">
+            Guardando...
+            <img alt="spinner" src="~/Content/images/spinner.gif" style="width: 36px; height: 36px;" />
+        </div>
+        *@
+        @RenderBody()
+
+        <footer></footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script type="text/javascript" src="~/Scripts/moment-with-locales.js" ></script>
+    @RenderSection("scripts", required: false)
+
+    <script>
+        $(function () {
+            $.datepicker.regional['es'] = {
+                closeText: 'Cerrar',
+                prevText: '< Ant',
+                nextText: 'Sig >',
+                currentText: 'Hoy',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+                dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+                weekHeader: 'Sm',
+                dateFormat: 'dd/mm/yy ',
+                timeFormat: 'HH:mm:ss',
+                showTime: true,
+                changeMonth: false,
+                changeYear: true,
+                showAnim: 'slide',
+                firstDay: 1,
+                yearRange: "-300:+10",
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''
+            };
+            $.datepicker.setDefaults($.datepicker.regional['es']);
+            $(".datepicker").datepicker();
+        });
+
+        function convertDate(inputFormat) {
+            function pad(s) { return (s < 10) ? '0' + s : s; }
+            var d = new Date(inputFormat);
+            return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
+
+        }
+        function convertDateInverted(inputFormat) {
+            function pad(s) { return (s < 10) ? '0' + s : s; }
+            var d = new Date(inputFormat);
+            return [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('/');
+        }
+        function dateOrNull(inputString) {
+            if (inputString == null || inputString.toString() === 'null') {
+                return null;
+            }
+            else return new Date(inputString);
+        }
+        function replaceAll(find, replace, str) {
+            while (str.indexOf(find) > -1) {
+                str = str.replace(find, replace);
+            }
+            return str;
+        }
+        function setFechaPara(id, fecha) {
+            //console.log('id: ' + id + ' ' + convertDate(fecha));
+            if (fecha == null || fecha.toString() === 'null') {
+                /* $(id).data("DateTimePicker").clear();
+                 $(id).data("DateTimePicker").viewDate(convertDate(new Date()));
+                 $(id).data("DateTimePicker").date(convertDate(new Date()));
+                 $(id).data("DateTimePicker").locale('es');*/
+                $(id + '_value').val('');
+            }
+            else {
+                /*$(id).data("DateTimePicker").date(convertDate(fecha));
+                $(id).data("DateTimePicker").viewDate(convertDate(fecha));
+                $(id).data("DateTimePicker").locale('es');*/
+                $(id + '_value').val(convertDate(fecha));
+            }
+        }
+
+    </script>
+</body>
+</html>

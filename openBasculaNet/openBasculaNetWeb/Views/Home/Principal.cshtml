@@ -8,7 +8,7 @@
 <div class="row  margin-arriba">
     <button type="button" class="col-md-2 btn btn-default btn-openBascula  "><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>&nbsp; GUARDAR</button>
     
-    <button type="button" class="col-md-offset-1 col-md-2 btn btn-default btn-openBascula "><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>&nbsp; EN TRANSITO</button>
+    <button type="button" class="col-md-offset-1 col-md-2 btn btn-default btn-openBascula" onclick="verEnTransito()"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>&nbsp; EN TRANSITO</button>
 </div>
 <hr />
 <div class="row  margin-arriba">
@@ -18,13 +18,16 @@
     <input type="text" class="col-md-3 text-uppercase" id="txtRemolque" />
 </div>
 <div class="row  margin-arriba">
-    <label class="col-md-offset-7 col-md-2">ENTRADA</label>
-    <div id="dtp_fecha_entrada" class='input-group date col-md-3' data-dbvalue="null">
+    <label class="col-md-offset-7 col-md-1">ENTRADA</label>
+    <button type="button" class="col-md-1 btn btn-default btn-openBascula"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></button>
+    <!--<div id="dtp_fecha_entrada" class='input-group date col-md-3' data-dbvalue="null">
         <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
         </span>
         <input type='text' class="datepicker form-control" id="dtp_fecha_entrada_value" />
     </div>
+    -->
+    <input type="text" class="col-md-3 text-uppercase" id="txtEntrada"  />   
 </div>
 <div class="row  margin-arriba">
     <label class="col-md-2">PRODUCTO</label>
@@ -83,8 +86,7 @@
         var ESTADO_GUARDADO = "FIN";
 
         window.onload = thisEndLoad;
-        function thisEndLoad() {
-           
+        function thisEndLoad() {          
 
             /*iniciamos el resto de valores*/
             $('[id*="dtp_"]').each(function () {
@@ -98,5 +100,10 @@
                     else setFechaPara(idFecha, null);
                 }
             });
+        }
+
+        function verEnTransito() {
+            var url = "/Home/VehiculosEnTransito";
+            LaunchModal('Vehiculos en transito', url);
         }
 </script>

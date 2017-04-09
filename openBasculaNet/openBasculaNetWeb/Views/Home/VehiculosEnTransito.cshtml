@@ -1,0 +1,94 @@
+﻿@using openBasculaNet.Core.Structures;
+@{
+    ViewBag.Title = "VehiculosEnTransito";
+    Layout = "~/Views/Shared/_Layoutiframe.cshtml";
+    List<TRANSITO_ACTUALES> transitos = ViewBag.vehiculosEnTransito as List<TRANSITO_ACTUALES>;
+}
+
+<ul>
+    @foreach(var transito in transitos)
+    {
+        <li>@transito.MAT_CABINA</li>
+    }
+</ul>
+<hr/>
+
+<script type="text/javascript">
+    var objeto = @Html.Raw(Json.Encode(new TRANSITO_ACTUALES()));
+    console.log(JSON.stringify(objeto));
+
+    var ESTADO_GUARDADO = "FIN";
+    parent.$('#btnMyModalAceptar').show();
+    window.onload = thisEndLoad;
+    function thisEndLoad() {
+        /*iniciamos el resto de valores*/
+        $('[id*="dtp_"]').each(function () {
+            if ($(this).attr('id').indexOf('_value') == -1) {
+                var idFecha = '#' + $(this).attr('id');
+                //$(idFecha).data("DateTimePicker").locale('es');
+                if ($(idFecha).data('dbvalue') !== '') {
+                    var fecha = dateOrNull($(idFecha).data('dbvalue'));
+                    setFechaPara(idFecha, fecha);
+                }
+                else setFechaPara(idFecha, null);
+            }
+        });
+    }
+
+    parent.$('#btnMyModalAceptar').click(function () {
+        $('.collapse').collapse("hide");
+        $.when($('#spinner').show("fast").delay(1200)).done(procesoGuardado());
+    });
+
+    function procesoGuardado() {
+        var jsonTransito = {
+            "ID_TRANSITO": 0,
+            "NUM_ALBARAN": null,
+            "MAT_CABINA": null,
+            "MAT_REMOLQUE": null,
+            "FECHA_ENTRADA": null,
+            "FECHA_SALIDA": null,
+            "BRUTO": null,
+            "TARA": null,
+            "NETO": null,
+            "IVA_APLICABLE": null,
+            "IMPORTE_FINAL": null,
+            "IMPORTE_PRODUCTO": null,
+            "ID_PRODUCTO": null,
+            "ID_CLIENTE": null,
+            "ID_PROVEEDOR": null,
+            "ID_AGENCIA": null,
+            "ID_POSEEDOR": null,
+            "ID_CONDUCTOR": null,
+            "ORIGEN": null,
+            "DESTINO": null
+        };
+
+        console.log(JSON.stringify(jsonTransito));
+        $.ajax({
+            type: "PUT",
+            url: '/API/openBascula/GuardarTransito',
+            data: jsonTransito,
+            async: true,
+            dataType: "json",
+            headers: {
+                "Accept": "application/json"
+            },
+            success: function (data) {
+                if (data === true) {
+                    buscarTransitos();
+                }
+                else {
+                    //error
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+        parent.$('#myModal').modal('toggle');
+    }
+
+
+</script>
+

@@ -194,6 +194,37 @@
             }
         }
 
+        function LaunchModal(titulo, url) {
+            $('#myModalLabel').text(titulo);
+            $('#btnMyModalAceptar').hide();
+            $('#btnMyModalAceptar').unbind('click');
+            $('#myModalURL').attr('src', url);
+            $('#myModalURL').show();
+            $('#spinner').hide();
+            $("#myModal").modal('show');
+        }
+        $('#myModal').on('hidden.bs.modal', function () {
+            $('#myModalURL').hide();
+            $('#myModalURL').attr('src', "/Reports/White.html");
+        })
+        function LaunchWindow() {
+            $("#myWindow").modal({ backdrop: false });
+            $("#myWindow").modal('show');
+        }
+        function LaunchModalMensajes(mensaje, title) {
+            $('#myModalMensajesTitle').text(title);
+            $('#btnMyModalMensajesAceptar').hide();
+            $('#btnMyModalMensajesAceptar').unbind('click');
+            $('#myModalMensajesMensaje').text(mensaje);
+            $("#myModalMensajes").modal('show');
+        }
+        function LaunchModalMensajesError(mensaje, title) {
+            $('#myModalMensajesErrorTitle').text(title);
+            $('#btnMyModalErrorAceptar').hide();
+            $('#btnMyModalErrorAceptar').unbind('click');
+            $('#myModalMensajesErrorMensaje').text(mensaje);
+            $("#myModalMensajesError").modal('show');
+        }
     </script>
 </body>
 </html>
