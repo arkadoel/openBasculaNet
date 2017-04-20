@@ -7,6 +7,7 @@ using System.Web.Http;
 
 using openBasculaNet.Core.Structures;
 using openBasculaNet.BusinessLogic.openBascula;
+using openBasculaNet.Core.Utiles;
 
 namespace openBasculaNetWeb.API
 {
@@ -42,7 +43,7 @@ namespace openBasculaNetWeb.API
         /// <summary>
         /// Obtiene la lista de transitos
         /// </summary>
-        /// <param name="filtro"></param>
+        /// <param name="filtro">Permite filtrar por matricula de cabina o remolque</param>
         /// <returns></returns>
         [HttpGet]
         [Route("API/openBascula/GetTransitos")]
@@ -51,11 +52,39 @@ namespace openBasculaNetWeb.API
             return Logic_Transitos.ListarTransitosActuales(filtro);
         }
 
+        /// <summary>
+        /// Guarda los datos de un transito en base de datos
+        /// </summary>
+        /// <param name="jsonTransito"></param>
+        /// <param name="fechaEntrada"></param>
+        /// <returns></returns>
         [HttpPut]
-        [Route("API/openBascula/GuardarTransito")]
+        [Route("API/openBascula/GuardarTransito")]       
         public bool GuardarTransito(TRANSITO_ACTUALES jsonTransito, string fechaEntrada)
         {
-            return true;
+            jsonTransito.FECHA_ENTRADA = Convertidores.DateFromString(fechaEntrada);
+            jsonTransito.MAT_CABINA = jsonTransito.MAT_CABINA.ToUpper();
+            jsonTransito.MAT_REMOLQUE = jsonTransito.MAT_REMOLQUE.ToUpper();
+            return Logic_Transitos.GuardarTransito(jsonTransito);
+        }
+
+        /// <summary>
+        /// Carga un transito desde base de datos
+        /// </summary>
+        /// <param name="idTransito"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("API/openBascula/VerTransito")]
+        public TRANSITO_ACTUALES VerTransito(string matCabina, Nullable<int> idTransito)
+        {
+            TRANSITO_ACTUALES tactual = null;
+            var listaTransitos = Logic_Transitos.ListarTransitosActuales(matCabina);
+
+            if (idTransito.HasValue)
+            {
+                tactual = listaTransitos.Where(x => x.ID_TRANSITO == idTransito).FirstOrDefault();
+            }
+            return tactual;
         }
     }
 }

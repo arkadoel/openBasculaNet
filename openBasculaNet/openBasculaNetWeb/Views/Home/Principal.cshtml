@@ -6,7 +6,7 @@
 
 <h2></h2>
 <div class="row  margin-arriba">
-    <button type="button" class="col-md-2 btn btn-default btn-openBascula  "><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>&nbsp; GUARDAR</button>
+    <button type="button" class="col-md-2 btn btn-default btn-openBascula  " onclick="GuardarTransito()"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>&nbsp; GUARDAR</button>
     
     <button type="button" class="col-md-offset-1 col-md-2 btn btn-default btn-openBascula" onclick="verEnTransito()"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>&nbsp; EN TRANSITO</button>
 </div>
@@ -105,5 +105,54 @@
         function verEnTransito() {
             var url = "/Home/VehiculosEnTransito";
             LaunchModal('Vehiculos en transito', url);
+        }
+
+        function GuardarTransito() {
+            var jsonTransito = {
+                "ID_TRANSITO": 0,
+                "NUM_ALBARAN": null,
+                "MAT_CABINA": $('#txtCabina').val(),
+                "MAT_REMOLQUE": $('#txtRemolque').val(),
+                "FECHA_ENTRADA": null,
+                "FECHA_SALIDA": null,
+                "BRUTO": null,
+                "TARA": null,
+                "NETO": null,
+                "IVA_APLICABLE": null,
+                "IMPORTE_FINAL": null,
+                "IMPORTE_PRODUCTO": null,
+                "ID_PRODUCTO": null,
+                "ID_CLIENTE": null,
+                "ID_PROVEEDOR": null,
+                "ID_AGENCIA": null,
+                "ID_POSEEDOR": null,
+                "ID_CONDUCTOR": null,
+                "ORIGEN": null,
+                "DESTINO": null
+            };
+
+            console.log(JSON.stringify(jsonTransito));
+            $.ajax({
+                type: "PUT",
+                url: '/API/openBascula/GuardarTransito?fechaEntrada=' + $('#txtEntrada').val(),
+                data: jsonTransito,
+                async: true,
+                dataType: "json",
+                headers: {
+                    "Accept": "application/json"
+                },
+                success: function (data) {
+                    if (data === true) {
+                        LaunchModalMensajes("Guardado correcto", "Guardado");
+                    }
+                    else {
+                        //error
+                        LaunchModalMensajesError("Error al guardar", "Guardado fallido");
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
+            });
         }
 </script>

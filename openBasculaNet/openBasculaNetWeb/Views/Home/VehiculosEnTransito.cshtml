@@ -14,8 +14,10 @@ Vehiculos
 <hr/>
 
 <script type="text/javascript">
+    @*
     var objeto = @Html.Raw(Json.Encode(new TRANSITO_ACTUALES()));
     console.log(JSON.stringify(objeto));
+     *@
 
     var ESTADO_GUARDADO = "FIN";
     parent.$('#btnMyModalAceptar').show();
@@ -37,38 +39,19 @@ Vehiculos
 
     parent.$('#btnMyModalAceptar').click(function () {
         $('.collapse').collapse("hide");
-        $.when($('#spinner').show("fast").delay(1200)).done(procesoGuardado());
+        $.when($('#spinner').show("fast").delay(1200)).done(cargarTransito());
     });
 
-    function procesoGuardado() {
-        var jsonTransito = {
-            "ID_TRANSITO": 0,
-            "NUM_ALBARAN": null,
-            "MAT_CABINA": null,
-            "MAT_REMOLQUE": null,
-            "FECHA_ENTRADA": null,
-            "FECHA_SALIDA": null,
-            "BRUTO": null,
-            "TARA": null,
-            "NETO": null,
-            "IVA_APLICABLE": null,
-            "IMPORTE_FINAL": null,
-            "IMPORTE_PRODUCTO": null,
-            "ID_PRODUCTO": null,
-            "ID_CLIENTE": null,
-            "ID_PROVEEDOR": null,
-            "ID_AGENCIA": null,
-            "ID_POSEEDOR": null,
-            "ID_CONDUCTOR": null,
-            "ORIGEN": null,
-            "DESTINO": null
-        };
+    function cargarTransito() {
 
-        console.log(JSON.stringify(jsonTransito));
+
         $.ajax({
-            type: "PUT",
-            url: '/API/openBascula/GuardarTransito',
-            data: jsonTransito,
+            type: "GET",
+            url: '/API/openBascula/VerTransito',
+            data: {
+                matCabina: $('').val(),
+                idTransito: $('').val() 
+            },
             async: true,
             dataType: "json",
             headers: {

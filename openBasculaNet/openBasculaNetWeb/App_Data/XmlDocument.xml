@@ -11,6 +11,14 @@
             <param name="filtro"></param>
             <returns></returns>
         </member>
+        <member name="M:openBasculaNetWeb.API.openBasculaController.GuardarTransito(openBasculaNet.Core.Structures.TRANSITO_ACTUALES,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="jsonTransito"></param>
+            <param name="fechaEntrada"></param>
+            <returns></returns>
+        </member>
         <member name="M:openBasculaNetWeb.Startup.DisableApplicationInsightsOnDebug">
             <summary>
             Disables the application insights locally.

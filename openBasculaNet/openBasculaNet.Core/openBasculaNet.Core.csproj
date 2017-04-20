@@ -102,6 +102,7 @@
     <Compile Include="Structures\VEHICULOS.cs">
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>
+    <Compile Include="Utiles\Convertidores.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
