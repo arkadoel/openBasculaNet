@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{b2c5e683-5d88-466f-ba3c-1be2656afc2a}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -69,7 +69,7 @@
     <Folder Include="obn\Programmability\Functions" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scripts\PreDeployScripts\InicialScript.sql" />
+    <None Include="openBasculaNet_BBDD.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="obn\Tables\Empresas.sql" />
@@ -85,5 +85,6 @@
     <Build Include="obn\Tables\AspNetUserLogins.sql" />
     <Build Include="obn\Tables\AspNetUserRoles.sql" />
     <Build Include="obn\Tables\AspNetUsers.sql" />
+    <Build Include="Scripts\PreDeployScripts\obn.sql" />
   </ItemGroup>
 </Project>

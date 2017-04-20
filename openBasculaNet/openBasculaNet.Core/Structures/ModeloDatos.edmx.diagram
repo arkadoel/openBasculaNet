@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="openBasculaNet2017Model.AspNetUsers" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="openBasculaNet2017Model.CONDUCTORES" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="openBasculaNet2017Model.CONFIGURACIONES" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="openBasculaNet2017Model.Empresas" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="openBasculaNet2017Model.HISTORICOS" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="openBasculaNet2017Model.PRODUCTOS" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="openBasculaNet2017Model.TRANSITO_ACTUALES" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
@@ -20,6 +19,7 @@
         <AssociationConnector Association="openBasculaNet2017Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="openBasculaNet2017Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="openBasculaNet2017Model.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="openBasculaNet2017Model.EMPRESAS" Width="1.5" PointX="6.75" PointY="6.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

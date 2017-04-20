@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="openBasculaNet2017Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="openBasculaNet2017Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -92,7 +92,7 @@
           <Property Name="PARAMETRO" Type="varchar" MaxLength="50" />
           <Property Name="VALOR" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Empresas">
+        <EntityType Name="EMPRESAS">
           <Key>
             <PropertyRef Name="ID_EMPRESA" />
           </Key>
@@ -276,7 +276,7 @@
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CONDUCTORES" EntityType="Self.CONDUCTORES" Schema="obn" store:Type="Tables" />
           <EntitySet Name="CONFIGURACIONES" EntityType="Self.CONFIGURACIONES" Schema="obn" store:Type="Tables" />
-          <EntitySet Name="Empresas" EntityType="Self.Empresas" Schema="obn" store:Type="Tables" />
+          <EntitySet Name="EMPRESAS" EntityType="Self.EMPRESAS" Schema="obn" store:Type="Tables" />
           <EntitySet Name="HISTORICOS" EntityType="Self.HISTORICOS" Schema="obn" store:Type="Tables" />
           <EntitySet Name="PRODUCTOS" EntityType="Self.PRODUCTOS" Schema="obn" store:Type="Tables" />
           <EntitySet Name="TRANSITO_ACTUALES" EntityType="Self.TRANSITO_ACTUALES" Schema="obn" store:Type="Tables" />
@@ -298,8 +298,7 @@
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="openBasculaNet2017Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -387,23 +386,6 @@
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="PARAMETRO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VALOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Empresas">
-          <Key>
-            <PropertyRef Name="ID_EMPRESA" />
-          </Key>
-          <Property Name="ID_EMPRESA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NOMBRE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="RAZON_SOCIAL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CIF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DIRECCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="LOCALIDAD" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="PROVINCIA" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="TELEFONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CUENTA_BANCARIA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FORMA_DE_PAGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CODIGO_CONTABLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="HISTORICOS">
           <Key>
@@ -547,7 +529,6 @@
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
           <EntitySet Name="CONDUCTORES" EntityType="Self.CONDUCTORES" />
           <EntitySet Name="CONFIGURACIONES" EntityType="Self.CONFIGURACIONES" />
-          <EntitySet Name="Empresas" EntityType="Self.Empresas" />
           <EntitySet Name="HISTORICOS" EntityType="Self.HISTORICOS" />
           <EntitySet Name="PRODUCTOS" EntityType="Self.PRODUCTOS" />
           <EntitySet Name="TRANSITO_ACTUALES" EntityType="Self.TRANSITO_ACTUALES" />
@@ -564,7 +545,25 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="EMPRESAS" EntityType="openBasculaNet2017Model.EMPRESAS" />
         </EntityContainer>
+        <EntityType Name="EMPRESAS">
+          <Key>
+            <PropertyRef Name="ID_EMPRESA" />
+          </Key>
+          <Property Name="ID_EMPRESA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RAZON_SOCIAL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CIF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LOCALIDAD" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PROVINCIA" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CUENTA_BANCARIA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FORMA_DE_PAGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CODIGO_CONTABLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -651,24 +650,6 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PARAMETRO" ColumnName="PARAMETRO" />
                 <ScalarProperty Name="VALOR" ColumnName="VALOR" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Empresas">
-            <EntityTypeMapping TypeName="openBasculaNet2017Model.Empresas">
-              <MappingFragment StoreEntitySet="Empresas">
-                <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="RAZON_SOCIAL" ColumnName="RAZON_SOCIAL" />
-                <ScalarProperty Name="CIF" ColumnName="CIF" />
-                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
-                <ScalarProperty Name="LOCALIDAD" ColumnName="LOCALIDAD" />
-                <ScalarProperty Name="PROVINCIA" ColumnName="PROVINCIA" />
-                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-                <ScalarProperty Name="CUENTA_BANCARIA" ColumnName="CUENTA_BANCARIA" />
-                <ScalarProperty Name="FORMA_DE_PAGO" ColumnName="FORMA_DE_PAGO" />
-                <ScalarProperty Name="CODIGO_CONTABLE" ColumnName="CODIGO_CONTABLE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -786,6 +767,24 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="EMPRESAS">
+            <EntityTypeMapping TypeName="openBasculaNet2017Model.EMPRESAS">
+              <MappingFragment StoreEntitySet="EMPRESAS">
+                <ScalarProperty Name="CODIGO_CONTABLE" ColumnName="CODIGO_CONTABLE" />
+                <ScalarProperty Name="FORMA_DE_PAGO" ColumnName="FORMA_DE_PAGO" />
+                <ScalarProperty Name="CUENTA_BANCARIA" ColumnName="CUENTA_BANCARIA" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="PROVINCIA" ColumnName="PROVINCIA" />
+                <ScalarProperty Name="LOCALIDAD" ColumnName="LOCALIDAD" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="CIF" ColumnName="CIF" />
+                <ScalarProperty Name="RAZON_SOCIAL" ColumnName="RAZON_SOCIAL" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

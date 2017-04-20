@@ -12,7 +12,7 @@ namespace openBasculaNet.Core.Structures
     using System;
     using System.Collections.Generic;
     
-    public partial class Empresas
+    public partial class EMPRESAS
     {
         public int ID_EMPRESA { get; set; }
         public string NOMBRE { get; set; }

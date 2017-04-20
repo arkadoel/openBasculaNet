@@ -72,7 +72,7 @@
     <Compile Include="Structures\C__MigrationHistory.cs">
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Structures\Empresas.cs">
+    <Compile Include="Structures\EMPRESAS.cs">
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>
     <Compile Include="Structures\HISTORICOS.cs">

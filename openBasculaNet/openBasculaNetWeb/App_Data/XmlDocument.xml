@@ -11,6 +11,11 @@
             <param name="filtro"></param>
             <returns></returns>
         </member>
+        <member name="M:openBasculaNetWeb.Startup.DisableApplicationInsightsOnDebug">
+            <summary>
+            Disables the application insights locally.
+            </summary>
+        </member>
         <member name="M:openBasculaNetWeb.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
             <summary>
             Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
