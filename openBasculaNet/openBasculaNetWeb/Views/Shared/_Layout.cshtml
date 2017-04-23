@@ -10,6 +10,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="~/Content/openBasculaDatePicker.css" />
+    <link rel="stylesheet" href="~/bower_components/bootstrap-table/dist/bootstrap-table.min.css" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -123,6 +124,7 @@
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/bootstrap")
     <script type="text/javascript" src="~/Scripts/moment-with-locales.js" ></script>
+    <script type="text/javascript" src="~/bower_components/bootstrap-table/dist/bootstrap-table.min.js"></script>
     @RenderSection("scripts", required: false)
 
     <script>
@@ -158,8 +160,17 @@
             function pad(s) { return (s < 10) ? '0' + s : s; }
             var d = new Date(inputFormat);
             return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
-
         }
+
+        function getDateWithTime() {
+            function pad(s) { return (s < 10) ? '0' + s : s; }
+            var d = new Date();
+            var dia = [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
+            var hora = [pad(d.getHours()), pad(d.getMinutes()), d.getSeconds()].join(':')
+            var tiempo = dia + " " + hora;
+            return tiempo;
+        }
+
         function convertDateInverted(inputFormat) {
             function pad(s) { return (s < 10) ? '0' + s : s; }
             var d = new Date(inputFormat);

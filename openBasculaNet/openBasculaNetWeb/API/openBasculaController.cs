@@ -47,7 +47,7 @@ namespace openBasculaNetWeb.API
         /// <returns></returns>
         [HttpGet]
         [Route("API/openBascula/GetTransitos")]
-        public List<TRANSITO_ACTUALES> GetTransitos(string filtro="")
+        public List<TRANSITO_ACTUALES> GetTransitos(string filtro)
         {
             return Logic_Transitos.ListarTransitosActuales(filtro);
         }

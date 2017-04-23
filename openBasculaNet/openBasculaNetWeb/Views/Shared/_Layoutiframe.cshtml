@@ -10,8 +10,9 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="~/Content/openBasculaDatePicker.css" />
+    <link rel="stylesheet" href="~/bower_components/bootstrap-table/dist/bootstrap-table.min.css" />
 </head>
-<body>
+<body class="body-iframe">
     <div class=" body-content">
         @*<div id="spinner" class="col-md-2" style="position:absolute; float:initial; background-color: white; top: 0; margin: 0 auto; ">
             Guardando...
@@ -27,6 +28,7 @@
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/bootstrap")
     <script type="text/javascript" src="~/Scripts/moment-with-locales.js" ></script>
+    <script type="text/javascript" src="~/bower_components/bootstrap-table/dist/bootstrap-table.min.js"></script>
     @RenderSection("scripts", required: false)
 
     <script>

@@ -5,6 +5,7 @@
 }
 
 <h2></h2>
+<input type="hidden" id="hdfIdTransito" name="hdfIdTransito" value="-1" />
 <div class="row  margin-arriba">
     <button type="button" class="col-md-2 btn btn-default btn-openBascula  " onclick="GuardarTransito()"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>&nbsp; GUARDAR</button>
     
@@ -19,7 +20,10 @@
 </div>
 <div class="row  margin-arriba">
     <label class="col-md-offset-7 col-md-1">ENTRADA</label>
-    <button type="button" class="col-md-1 btn btn-default btn-openBascula"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></button>
+    <button type="button" class="col-md-1 btn btn-default btn-openBascula" onclick="PonerHoraEntrada()">
+        <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    </button>
     <!--<div id="dtp_fecha_entrada" class='input-group date col-md-3' data-dbvalue="null">
         <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
@@ -109,7 +113,7 @@
 
         function GuardarTransito() {
             var jsonTransito = {
-                "ID_TRANSITO": 0,
+                "ID_TRANSITO": -1,
                 "NUM_ALBARAN": null,
                 "MAT_CABINA": $('#txtCabina').val(),
                 "MAT_REMOLQUE": $('#txtRemolque').val(),
@@ -154,5 +158,9 @@
                     console.log(errorThrown);
                 }
             });
+        }
+
+        function PonerHoraEntrada() {
+            $('#txtEntrada').val( getDateWithTime());
         }
 </script>

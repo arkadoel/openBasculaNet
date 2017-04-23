@@ -5,6 +5,9 @@
 body {
     background-color: #efebe9;
 }
+.body-iframe {
+    background-color: white;
+}
 
 .navbar-brand {
     background-color: #d7ccc8;
@@ -27,7 +30,7 @@ body {
 
 
 h1, h2, h3, h4, h5 {
-    color: #00796b !important;
+    color: #8d6e63 !important;
     font-weight: bold !important;
 }
 
@@ -93,11 +96,11 @@ textarea {
     margin-right: 15px !important;
     font-size: 24px !important;
     vertical-align: middle !important;
-    color: #00796b !important;
+    color: #8d6e63 !important;
 }
-/*Buscador de pacientes*/
-.buscador-pacientes {
-    background-color: #b2dfdb;
+/*Buscador de transitos*/
+.buscador-transitos {
+    background-color: #d7ccc8;
     padding: 5px;
     padding-left: 15px;
 }
@@ -108,13 +111,13 @@ textarea {
 }
 
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
-    background-color: #00796b;
+    background-color: #8d6e63;
 }
 
 .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
-    background-color: #00796b;
+    background-color: #8d6e63;
 }
-/*End Buscador de pacientes*/
+/*End Buscador de transitos*/
 /*Ficha paciente*/
 .div-ficha-paciente {
     border: 3px solid #00695c;
@@ -128,7 +131,7 @@ textarea {
 /*End Ficha paciente*/
 
 .border_rojo {
-    border: 1px solid #00796b;
+    border: 1px solid #8d6e63;
     padding: 5px !important;
     width: 50%;
 }
@@ -175,12 +178,12 @@ textarea {
 
 
 .tooltip-inner {
-    background-color: #00796b !important;
+    background-color: #8d6e63 !important;
     font-size: 14px;
 }
 
 .tooltip.bottom .tooltip-arrow {
-    border-bottom-color: #00796b !important;
+    border-bottom-color: #8d6e63 !important;
 }
 
 .help-page .sample-header {

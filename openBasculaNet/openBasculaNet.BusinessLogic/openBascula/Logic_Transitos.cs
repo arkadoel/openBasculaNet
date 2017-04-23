@@ -22,7 +22,12 @@ namespace openBasculaNet.BusinessLogic.openBascula
             {
                 try
                 {
-                    var acDB = obnDB.Tablas.TRANSITO_ACTUALES.Where(x => x.ID_TRANSITO == obj.ID_TRANSITO).FirstOrDefault();
+                    TRANSITO_ACTUALES acDB = null;
+                    if (obj.ID_TRANSITO != -1)
+                    {
+                        acDB = obnDB.Tablas.TRANSITO_ACTUALES.Where(x => x.ID_TRANSITO == obj.ID_TRANSITO).FirstOrDefault();
+                    }
+                   
                     if (acDB != null)
                     {
                         if (acDB.Equals(obj) == false)
@@ -64,14 +69,14 @@ namespace openBasculaNet.BusinessLogic.openBascula
             List<TRANSITO_ACTUALES> transitos = new List<TRANSITO_ACTUALES>();
 
             if (manzana.LicenciaActiva())
-            {
-                filtro = filtro.ToUpper();
+            {                
                 if (string.IsNullOrWhiteSpace(filtro))
-                {
+                {                    
                     transitos = obnDB.Tablas.TRANSITO_ACTUALES.ToList();
                 }
                 else
                 {
+                    filtro = filtro.ToUpper();
                     transitos = obnDB.Tablas.TRANSITO_ACTUALES
                                     .Where(
                                             x => (x.MAT_CABINA.Contains(filtro) || x.MAT_REMOLQUE.Contains(filtro))

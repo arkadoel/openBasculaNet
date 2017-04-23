@@ -4,14 +4,27 @@
     Layout = "~/Views/Shared/_Layoutiframe.cshtml";
     List<TRANSITO_ACTUALES> transitos = ViewBag.vehiculosEnTransito as List<TRANSITO_ACTUALES>;
 }
-Vehiculos
-<ul>
-    @foreach(var transito in transitos)
-    {
-        <li>@transito.MAT_CABINA</li>
-    }
-</ul>
-<hr/>
+
+<div class="row">
+    <div class="buscador-transitos col-md-2 ">
+        <h3>Buscador <span class="glyphicon glyphicon-search" /></h3>
+        <label> Matricula o remolque</label>
+        <input type="text" class="col-md-12" id="txtFiltroTexto" />
+        <br /><br /><br />
+        
+        <br />
+        <button type="button" class="btn btn-primary btn-openBascula" onclick="buscarTransitos()">BUSCAR</button>
+        <br /><br />
+        <button type="button" class="btn btn-primary btn-openBascula" onclick="restablecerFiltro()">RESTABLECER</button>
+
+        <br /><br />
+    </div>
+    <div class="col-md-10" id="wrp-tbl-buscador-transitos">
+
+    </div>
+
+    <hr />
+</div>
 
 <script type="text/javascript">
     @*
@@ -35,6 +48,8 @@ Vehiculos
                 else setFechaPara(idFecha, null);
             }
         });
+
+        buscarTransitos();
     }
 
     parent.$('#btnMyModalAceptar').click(function () {
@@ -50,7 +65,7 @@ Vehiculos
             url: '/API/openBascula/VerTransito',
             data: {
                 matCabina: $('').val(),
-                idTransito: $('').val() 
+                idTransito: $('').val()
             },
             async: true,
             dataType: "json",
@@ -72,6 +87,58 @@ Vehiculos
         parent.$('#myModal').modal('toggle');
     }
 
+    function buscarTransitos() {
+        $.ajax({
+            type: "GET",
+            url: '/API/openBascula/GetTransitos',
+            data: {
+                filtro: $('#txtFiltroTexto').val()
+            },
+            async: true,
+            dataType: "json",
+            headers: {
+                "Accept": "application/json"
+            },
+            success: function (data) {
+                console.log(data);
+                pintarTabla(data);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+    }
 
-</script>
+    function pintarTabla(dataJson) {
+        $('#wrp-tbl-buscador-transitos').empty();
+        $('#wrp-tbl-buscador-transitos').append('<table id="tbl-resultados-transitos" data-classes="table table-hover table-condensed"></table>');
+        $('#tbl-resultados-transitos').bootstrapTable({
+            columns: [{
+                    field: 'NUM_ALBARAN',
+                    title: 'Nº ALBARAN',
+                    sortable: true
+                },
+                {
+                    field: 'MAT_CABINA',
+                    title: 'CABINA',
+                    sortable: true
+                },
+                {
+                    field: 'MAT_REMOLQUE',
+                    title: 'REMOLQUE',
+                    sortable: true
+                },
+                {
+                    field: 'FECHA_ENTRADA',
+                    title: 'ENTRADA',
+                    sortable: true
+                }
+            ],
+            pagination: true,
+            toggle: 'table',
+            data: dataJson
+        });
+    }
+
+    </script>
 
