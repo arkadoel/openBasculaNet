@@ -162,9 +162,18 @@
             return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
         }
 
-        function getDateWithTime() {
+        function getDateWithTimeNow() {
             function pad(s) { return (s < 10) ? '0' + s : s; }
             var d = new Date();
+            var dia = [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
+            var hora = [pad(d.getHours()), pad(d.getMinutes()), d.getSeconds()].join(':')
+            var tiempo = dia + " " + hora;
+            return tiempo;
+        }
+
+        function getDateWithTime(inputFormat) {
+            function pad(s) { return (s < 10) ? '0' + s : s; }
+            var d = new Date(inputFormat);
             var dia = [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
             var hora = [pad(d.getHours()), pad(d.getMinutes()), d.getSeconds()].join(':')
             var tiempo = dia + " " + hora;

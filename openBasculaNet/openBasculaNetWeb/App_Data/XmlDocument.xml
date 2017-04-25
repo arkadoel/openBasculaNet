@@ -4,6 +4,13 @@
         <name>openBasculaNetWeb</name>
     </assembly>
     <members>
+        <member name="M:openBasculaNetWeb.API.openBasculaController.GetTransitosTabla(System.String)">
+            <summary>
+            Obtiene la lista de transitos
+            </summary>
+            <param name="filtro">Permite filtrar por matricula de cabina o remolque</param>
+            <returns></returns>
+        </member>
         <member name="M:openBasculaNetWeb.API.openBasculaController.GetTransitos(System.String)">
             <summary>
             Obtiene la lista de transitos
@@ -507,6 +514,11 @@
             Initializes a new instance of the <see cref="T:openBasculaNetWeb.Areas.HelpPage.XmlDocumentationProvider"/> class.
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="P:openBasculaNetWeb.Models.TransitoActualModel.Ver">
+            <summary>
+            string que pone la ruta a la llamada para ver este elemento
+            </summary>
         </member>
     </members>
 </doc>

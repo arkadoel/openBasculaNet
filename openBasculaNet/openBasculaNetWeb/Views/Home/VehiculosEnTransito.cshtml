@@ -57,15 +57,14 @@
         $.when($('#spinner').show("fast").delay(1200)).done(cargarTransito());
     });
 
-    function cargarTransito() {
-
+    function verTransito(idTransito, mat_cabina) {
 
         $.ajax({
             type: "GET",
             url: '/API/openBascula/VerTransito',
             data: {
-                matCabina: $('').val(),
-                idTransito: $('').val()
+                matCabina: mat_cabina,
+                idTransito: idTransito
             },
             async: true,
             dataType: "json",
@@ -73,12 +72,7 @@
                 "Accept": "application/json"
             },
             success: function (data) {
-                if (data === true) {
-                    buscarTransitos();
-                }
-                else {
-                    //error
-                }
+                parent.cargarTransitoDesdeJSON(data);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(errorThrown);
@@ -90,7 +84,7 @@
     function buscarTransitos() {
         $.ajax({
             type: "GET",
-            url: '/API/openBascula/GetTransitos',
+            url: '/API/openBascula/GetTransitosTabla',
             data: {
                 filtro: $('#txtFiltroTexto').val()
             },
@@ -114,22 +108,27 @@
         $('#wrp-tbl-buscador-transitos').append('<table id="tbl-resultados-transitos" data-classes="table table-hover table-condensed"></table>');
         $('#tbl-resultados-transitos').bootstrapTable({
             columns: [{
-                    field: 'NUM_ALBARAN',
+                    field: 'Ver',
+                    title: 'VER',
+                    sortable: false
+                },
+                {
+                    field: 'data.NUM_ALBARAN',
                     title: 'Nº ALBARAN',
                     sortable: true
                 },
                 {
-                    field: 'MAT_CABINA',
+                    field: 'data.MAT_CABINA',
                     title: 'CABINA',
                     sortable: true
                 },
                 {
-                    field: 'MAT_REMOLQUE',
+                    field: 'data.MAT_REMOLQUE',
                     title: 'REMOLQUE',
                     sortable: true
                 },
                 {
-                    field: 'FECHA_ENTRADA',
+                    field: 'data.FECHA_ENTRADA',
                     title: 'ENTRADA',
                     sortable: true
                 }

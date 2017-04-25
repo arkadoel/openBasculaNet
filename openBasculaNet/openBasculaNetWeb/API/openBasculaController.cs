@@ -46,6 +46,32 @@ namespace openBasculaNetWeb.API
         /// <param name="filtro">Permite filtrar por matricula de cabina o remolque</param>
         /// <returns></returns>
         [HttpGet]
+        [Route("API/openBascula/GetTransitosTabla")]
+        public List<Models.TransitoActualModel> GetTransitosTabla(string filtro)
+        {
+            string style = "height: 24px !important; width: 24px !important; margin-right: 15px !important; font-size: 24px !important; vertical-align: middle !important; color: #00796b !important;";
+
+            List<TRANSITO_ACTUALES> transitos = Logic_Transitos.ListarTransitosActuales(filtro);
+            List<Models.TransitoActualModel> listado = new List<Models.TransitoActualModel>();
+
+            Models.TransitoActualModel tm = null;
+            foreach (TRANSITO_ACTUALES transito in transitos)
+            {
+                tm = new Models.TransitoActualModel();
+                tm.data = transito;
+                tm.Ver = "<span class=\"glyphicon glyphicon-list-alt \" aria-hidden='true' style='" + style + "' onclick=\"verTransito(" + tm.data.ID_TRANSITO + ", '"+ tm.data.MAT_CABINA + "')\"></span>";
+                listado.Add(tm);
+            }
+            
+            return listado;
+        }
+
+        /// <summary>
+        /// Obtiene la lista de transitos
+        /// </summary>
+        /// <param name="filtro">Permite filtrar por matricula de cabina o remolque</param>
+        /// <returns></returns>
+        [HttpGet]
         [Route("API/openBascula/GetTransitos")]
         public List<TRANSITO_ACTUALES> GetTransitos(string filtro)
         {

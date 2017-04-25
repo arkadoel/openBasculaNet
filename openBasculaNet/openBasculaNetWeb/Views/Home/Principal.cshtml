@@ -111,17 +111,29 @@
             LaunchModal('Vehiculos en transito', url);
         }
 
+        function cargarTransitoDesdeJSON(data) {
+            $('#hdfIdTransito').val(data.ID_TRANSITO);
+            $('#txtCabina').val(data.MAT_CABINA);
+            $('#txtRemolque').val(data.MAT_REMOLQUE);
+            $('#txtEntrada').val(getDateWithTime(data.FECHA_ENTRADA));
+            $('#txtPesoEntrada').val(data.BRUTO);
+            $('#txtPesoSalida').val(data.TARA);
+            $('#txtPesoNeto').val(data.NETO);
+
+            $('#txtPRODUCTO').val(data.ID_PRODUCTO);
+        }
+
         function GuardarTransito() {
             var jsonTransito = {
-                "ID_TRANSITO": -1,
+                "ID_TRANSITO": $('#hdfIdTransito').val(),
                 "NUM_ALBARAN": null,
                 "MAT_CABINA": $('#txtCabina').val(),
                 "MAT_REMOLQUE": $('#txtRemolque').val(),
                 "FECHA_ENTRADA": null,
                 "FECHA_SALIDA": null,
-                "BRUTO": null,
-                "TARA": null,
-                "NETO": null,
+                "BRUTO": $('#txtPesoEntrada').val(),
+                "TARA": $('#txtPesoSalida').val(),
+                "NETO": $('#txtPesoNeto').val(),
                 "IVA_APLICABLE": null,
                 "IMPORTE_FINAL": null,
                 "IMPORTE_PRODUCTO": null,
@@ -148,6 +160,7 @@
                 success: function (data) {
                     if (data === true) {
                         LaunchModalMensajes("Guardado correcto", "Guardado");
+                        $('#hdfIdTransito').val(-1);
                     }
                     else {
                         //error
@@ -161,6 +174,6 @@
         }
 
         function PonerHoraEntrada() {
-            $('#txtEntrada').val( getDateWithTime());
+            $('#txtEntrada').val(getDateWithTimeNow());
         }
 </script>
