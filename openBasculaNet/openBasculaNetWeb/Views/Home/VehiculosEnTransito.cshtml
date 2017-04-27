@@ -94,7 +94,10 @@
                 "Accept": "application/json"
             },
             success: function (data) {
-                console.log(data);
+                //console.log(data);
+                $.each(data, function (index, value) {
+                    data[index].data['FECHA_ENTRADA'] = parent.getDateWithTime(data[index].data.FECHA_ENTRADA);
+                });
                 pintarTabla(data);
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -108,36 +111,36 @@
         $('#wrp-tbl-buscador-transitos').append('<table id="tbl-resultados-transitos" data-classes="table table-hover table-condensed"></table>');
         $('#tbl-resultados-transitos').bootstrapTable({
             columns: [{
-                    field: 'Ver',
-                    title: 'VER',
-                    sortable: false
-                },
-                {
-                    field: 'data.NUM_ALBARAN',
-                    title: 'Nº ALBARAN',
-                    sortable: true
-                },
-                {
-                    field: 'data.MAT_CABINA',
-                    title: 'CABINA',
-                    sortable: true
-                },
-                {
-                    field: 'data.MAT_REMOLQUE',
-                    title: 'REMOLQUE',
-                    sortable: true
-                },
-                {
-                    field: 'data.FECHA_ENTRADA',
-                    title: 'ENTRADA',
-                    sortable: true
-                }
+                field: 'Ver',
+                title: 'VER',
+                sortable: false
+            },
+            {
+                field: 'data.NUM_ALBARAN',
+                title: 'Nº ALBARAN',
+                sortable: true
+            },
+            {
+                field: 'data.MAT_CABINA',
+                title: 'CABINA',
+                sortable: true
+            },
+            {
+                field: 'data.MAT_REMOLQUE',
+                title: 'REMOLQUE',
+                sortable: true
+            },
+            {
+                field: 'data.FECHA_ENTRADA',
+                title: 'ENTRADA',
+                sortable: true
+            },
             ],
             pagination: true,
             toggle: 'table',
             data: dataJson
         });
     }
-
+    
     </script>
 

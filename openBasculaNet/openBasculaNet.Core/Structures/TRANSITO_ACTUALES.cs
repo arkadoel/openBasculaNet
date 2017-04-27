@@ -20,8 +20,8 @@ namespace openBasculaNet.Core.Structures
         public string MAT_REMOLQUE { get; set; }
         public Nullable<System.DateTime> FECHA_ENTRADA { get; set; }
         public Nullable<System.DateTime> FECHA_SALIDA { get; set; }
-        public Nullable<int> BRUTO { get; set; }
-        public Nullable<int> TARA { get; set; }
+        public Nullable<int> PESO_ENTRADA { get; set; }
+        public Nullable<int> PESO_SALIDA { get; set; }
         public Nullable<int> NETO { get; set; }
         public string IVA_APLICABLE { get; set; }
         public string IMPORTE_FINAL { get; set; }

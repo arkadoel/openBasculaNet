@@ -6,6 +6,8 @@
 
 <h2></h2>
 <input type="hidden" id="hdfIdTransito" name="hdfIdTransito" value="-1" />
+<input type="hidden" id="hdfNumAlbaran" name="hdfNumAlbaran" value="-1" />
+
 <div class="row  margin-arriba">
     <button type="button" class="col-md-2 btn btn-default btn-openBascula  " onclick="GuardarTransito()"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>&nbsp; GUARDAR</button>
     
@@ -35,42 +37,42 @@
 </div>
 <div class="row  margin-arriba">
     <label class="col-md-2">PRODUCTO</label>
-    <input type="text" class="col-md-9 text-left" id="txtProducto" />
+    <input type="text" class="col-md-9 text-left" id="txtPRODUCTO" data-id=""/>
     <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
 <div class="row  margin-arriba">
     <label class="col-md-2">CLIENTE</label>
-    <input type="text" class="col-md-9" id="txtCLIENTE" />
+    <input type="text" class="col-md-9" id="txtCLIENTE" data-id="" />
     <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
 <div class="row  margin-arriba">
     <label class="col-md-2">PROVEEDOR</label>
-    <input type="text" class="col-md-9" id="txtPROVEEDOR" />
+    <input type="text" class="col-md-9" id="txtPROVEEDOR" data-id="" />
     <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
 <div class="row  margin-arriba">
     <label class="col-md-2">AGENCIA</label>
-    <input type="text" class="col-md-9" id="txtAGENCIA" />
+    <input type="text" class="col-md-9" id="txtAGENCIA" data-id="" />
     <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
 <div class="row  margin-arriba">
     <label class="col-md-2">POSEEDOR</label>
-    <input type="text" class="col-md-9" id="txtPOSEEDOR" />
+    <input type="text" class="col-md-9" id="txtPOSEEDOR" data-id=""/>
     <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
 <div class="row  margin-arriba">
     <label class="col-md-2">CONDUCTOR</label>
-    <input type="text" class="col-md-9" id="txtCONDUCTOR" />
+    <input type="text" class="col-md-9" id="txtCONDUCTOR" data-id=""/>
     <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
 <div class="row  margin-arriba">
     <label class="col-md-2">ORIGEN</label>
-    <input type="text" class="col-md-9" id="txtORIGEN" />
+    <input type="text" class="col-md-9" id="txtORIGEN" data-id=""/>
     <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
 <div class="row  margin-arriba">
     <label class="col-md-2">DESTINO</label>
-    <input type="text" class="col-md-9" id="txtDESTINO" />
+    <input type="text" class="col-md-9" id="txtDESTINO" data-id=""/>
     <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
 <div class="row  margin-arriba">
@@ -83,7 +85,7 @@
 </div>
 <div class="row  margin-arriba">
     <label class="col-md-2">NETO</label>
-    <input type="text" class="col-md-3" id="txtPesoNeto" />
+    <input type="text" class="col-md-3" id="txtPesoNeto" readonly="readonly" />
 </div>
 
 <script type="text/javascript">
@@ -104,6 +106,10 @@
                     else setFechaPara(idFecha, null);
                 }
             });
+
+            LimpiarCampos();
+            $('#txtPesoEntrada').on('keyup', function () { calcularNETO(); });
+            $('#txtPesoSalida').on('keyup', function () { calcularNETO(); });
         }
 
         function verEnTransito() {
@@ -111,40 +117,60 @@
             LaunchModal('Vehiculos en transito', url);
         }
 
-        function cargarTransitoDesdeJSON(data) {
-            $('#hdfIdTransito').val(data.ID_TRANSITO);
-            $('#txtCabina').val(data.MAT_CABINA);
-            $('#txtRemolque').val(data.MAT_REMOLQUE);
-            $('#txtEntrada').val(getDateWithTime(data.FECHA_ENTRADA));
-            $('#txtPesoEntrada').val(data.BRUTO);
-            $('#txtPesoSalida').val(data.TARA);
-            $('#txtPesoNeto').val(data.NETO);
+        function cargarTransitoDesdeJSON(modelo) {
+            LimpiarCampos();
+            $('#hdfIdTransito').val(modelo.data.ID_TRANSITO);
+            $('hdfNumAlbaran').val(modelo.data.NUM_ALBARAN);
+            $('#txtCabina').val(modelo.data.MAT_CABINA);
+            $('#txtRemolque').val(modelo.data.MAT_REMOLQUE);
+            $('#txtEntrada').val( getDateWithTime(modelo.data.FECHA_ENTRADA));   
 
-            $('#txtPRODUCTO').val(data.ID_PRODUCTO);
+            //ids
+            $('#txtPRODUCTO').data('id', modelo.data.ID_PRODUCTO);
+            $('#txtPOSEEDOR').data('id', modelo.data.ID_POSEEDOR);
+            $('#txtPROVEEDOR').data('id', modelo.data.ID_PROVEEDOR);
+            $('#txtAGENCIA').data('id', modelo.data.ID_AGENCIA);
+            $('#txtCLIENTE').data('id', modelo.data.ID_CLIENTE);
+            $('#txtCONDUCTOR').data('id', modelo.data.ID_CONDUCTOR);
+            //textos a mostrar
+            $('#txtPRODUCTO').val(modelo.TEXTO_PRODUCTO);
+            $('#txtPOSEEDOR').val(modelo.TEXTO_POSEEDOR);
+            $('#txtPROVEEDOR').val(modelo.TEXTO_PROVEEDOR);
+            $('#txtAGENCIA').val(modelo.TEXTO_AGENCIA);
+            $('#txtCLIENTE').val(modelo.TEXTO_CLIENTE);
+            $('#txtCONDUCTOR').val(modelo.TEXTO_CONDUCTOR);
+
+            $('#txtORIGEN').val(modelo.data.ORIGEN);
+            $('#txtDESTINO').val(modelo.data.DESTINO);
+
+            $('#txtPesoEntrada').val(modelo.data.PESO_ENTRADA);
+            $('#txtPesoSalida').val(modelo.data.PESO_SALIDA);
+            $('#txtPesoNeto').val(modelo.data.NETO);
+            calcularNETO();
         }
 
         function GuardarTransito() {
             var jsonTransito = {
-                "ID_TRANSITO": $('#hdfIdTransito').val(),
-                "NUM_ALBARAN": null,
+                "ID_TRANSITO": parseInt($('#hdfIdTransito').val()),
+                "NUM_ALBARAN": $('hdfNumAlbaran').val(),
                 "MAT_CABINA": $('#txtCabina').val(),
                 "MAT_REMOLQUE": $('#txtRemolque').val(),
-                "FECHA_ENTRADA": null,
+                "FECHA_ENTRADA": $('#txtEntrada').val(),
                 "FECHA_SALIDA": null,
-                "BRUTO": $('#txtPesoEntrada').val(),
-                "TARA": $('#txtPesoSalida').val(),
+                "PESO_ENTRADA": $('#txtPesoEntrada').val(),
+                "PESO_SALIDA": $('#txtPesoSalida').val(),
                 "NETO": $('#txtPesoNeto').val(),
                 "IVA_APLICABLE": null,
                 "IMPORTE_FINAL": null,
                 "IMPORTE_PRODUCTO": null,
-                "ID_PRODUCTO": null,
-                "ID_CLIENTE": null,
-                "ID_PROVEEDOR": null,
-                "ID_AGENCIA": null,
-                "ID_POSEEDOR": null,
-                "ID_CONDUCTOR": null,
-                "ORIGEN": null,
-                "DESTINO": null
+                "ID_PRODUCTO": $('#txtPRODUCTO').data('id'),
+                "ID_CLIENTE": $('#txtCLIENTE').data('id'),
+                "ID_PROVEEDOR": $('#txtPROVEEDOR').data('id'),
+                "ID_AGENCIA": $('#txtAGENCIA').data('id'),
+                "ID_POSEEDOR": $('#txtPOSEEDOR').data('id'),
+                "ID_CONDUCTOR": $('#txtCONDUCTOR').data('id'),
+                "ORIGEN": $('#txtORIGEN').val(),
+                "DESTINO": $('#txtDESTINO').val()
             };
 
             console.log(JSON.stringify(jsonTransito));
@@ -160,7 +186,7 @@
                 success: function (data) {
                     if (data === true) {
                         LaunchModalMensajes("Guardado correcto", "Guardado");
-                        $('#hdfIdTransito').val(-1);
+                        LimpiarCampos();
                     }
                     else {
                         //error
@@ -171,6 +197,43 @@
                     console.log(errorThrown);
                 }
             });
+        }
+
+        function LimpiarCampos() {
+            $('#hdfIdTransito').val(-1);
+            $('hdfNumAlbaran').val(-1);
+            $('#txtCabina').val('');
+            $('#txtRemolque').val('');
+            $('#txtEntrada').val('');
+            $('#txtORIGEN').val('');
+            $('#txtDESTINO').val('');            
+
+            $('#txtPRODUCTO').val('');
+            $('#txtPROVEEDOR').val('');
+            $('#txtPOSEEDOR').val('');
+            $('#txtAGENCIA').val('');
+            $('#txtCONDUCTOR').val('');
+            $('#txtCLIENTE').val('');
+
+            $('#txtPesoEntrada').val('');
+            $('#txtPesoSalida').val('');
+            $('#txtPesoNeto').val('');
+        }
+
+        function calcularNETO() {
+            var p1 = isNaN($('#txtPesoEntrada').val()) || $('#txtPesoEntrada').val() == null ? 0 : parseInt($('#txtPesoEntrada').val());
+            var p2 = isNaN($('#txtPesoSalida').val()) || $('#txtPesoSalida').val() == null ? 0 : parseInt($('#txtPesoSalida').val());
+            var neto = 0;
+
+            if (p1 >= p2) {
+                neto = p1 - p2;                
+            }
+            else {
+                neto = p2 - p1  
+            }
+
+            if (isNaN(neto)) $('#txtPesoNeto').val('');
+            else $('#txtPesoNeto').val(neto);            
         }
 
         function PonerHoraEntrada() {

@@ -172,6 +172,7 @@
         }
 
         function getDateWithTime(inputFormat) {
+            inputFormat = replaceAll('T', ' ', inputFormat);
             function pad(s) { return (s < 10) ? '0' + s : s; }
             var d = new Date(inputFormat);
             var dia = [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');

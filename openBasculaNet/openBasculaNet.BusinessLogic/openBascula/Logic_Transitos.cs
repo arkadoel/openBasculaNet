@@ -32,7 +32,7 @@ namespace openBasculaNet.BusinessLogic.openBascula
                     {
                         if (acDB.Equals(obj) == false)
                         {
-                            //obnDB.Tablas.Entry(acDB).Reload();
+                            obnDB.Tablas.Entry(acDB).Reload();
                             try
                             {
                                 obnDB.Tablas.Entry(acDB).CurrentValues.SetValues(obj);
@@ -46,6 +46,8 @@ namespace openBasculaNet.BusinessLogic.openBascula
                     }
                     else
                     {
+                        TRANSITO_ACTUALES t = new TRANSITO_ACTUALES();
+                        obj.ID_TRANSITO = 0;
                         obnDB.Tablas.TRANSITO_ACTUALES.Add(obj);
                         obnDB.Save();
                     }

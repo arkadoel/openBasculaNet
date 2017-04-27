@@ -97,20 +97,24 @@ namespace openBasculaNetWeb.API
         /// <summary>
         /// Carga un transito desde base de datos
         /// </summary>
+        /// <param name="matCabina"></param>
         /// <param name="idTransito"></param>
         /// <returns></returns>
         [HttpGet]
         [Route("API/openBascula/VerTransito")]
-        public TRANSITO_ACTUALES VerTransito(string matCabina, Nullable<int> idTransito)
+        public Models.TransitoActualModel VerTransito(string matCabina, Nullable<int> idTransito)
         {
             TRANSITO_ACTUALES tactual = null;
+            Models.TransitoActualModel mod = new Models.TransitoActualModel();
             var listaTransitos = Logic_Transitos.ListarTransitosActuales(matCabina);
 
             if (idTransito.HasValue)
             {
                 tactual = listaTransitos.Where(x => x.ID_TRANSITO == idTransito).FirstOrDefault();
+                mod.data = tactual;
+
             }
-            return tactual;
+            return mod;
         }
     }
 }
