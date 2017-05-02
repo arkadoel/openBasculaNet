@@ -1,12 +1,12 @@
 ﻿CREATE TABLE [obn].[HISTORICOS] (
-    [ID_HISTORICO]           INT          NOT NULL,
+    [ID_HISTORICO]           INT          IDENTITY (1, 1) NOT NULL,
     [NUM_ALBARAN]            VARCHAR (50) NULL,
     [MAT_CABINA]             VARCHAR (50) NULL,
     [MAT_REMOLQUE]           VARCHAR (50) NULL,
-    [FECHA_ENTRADA]          DATE         NULL,
-    [FECHA_SALIDA]           DATE         NULL,
-    [BRUTO]                  INT          NULL,
-    [TARA]                   INT          NULL,
+    [FECHA_ENTRADA]          DATETIME         NULL,
+    [FECHA_SALIDA]           DATETIME         NULL,
+    [PESO_ENTRADA]           INT          NULL,
+    [PESO_SALIDA]            INT          NULL,
     [NETO]                   INT          NULL,
     [ORIGEN]                 VARCHAR (50) NULL,
     [DESTINO]                VARCHAR (50) NULL,
@@ -47,6 +47,6 @@
     [DIRECCION_CONDUCTOR]    VARCHAR (50) NULL,
     [TLF_CONDUCTOR]          VARCHAR (50) NULL,
     [UBICACION_CONDUCTOR]    VARCHAR (50) NULL,
-    PRIMARY KEY CLUSTERED ([ID_HISTORICO] ASC)
+    CONSTRAINT [PK__HISTORIC__9679E8E0F458B459] PRIMARY KEY CLUSTERED ([ID_HISTORICO] ASC)
 );
 

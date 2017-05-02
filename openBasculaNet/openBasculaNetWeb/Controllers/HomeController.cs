@@ -42,5 +42,11 @@ namespace openBasculaNetWeb.Controllers
             ViewBag.vehiculosEnTransito = transitos;
             return View();
         }
+
+        public ActionResult Buscador(Enumeraciones.TipoBuscador tipoBusqueda)
+        {
+            ViewBag.TipoBusqueda = tipoBusqueda;
+            return View();
+        }
     }
 }

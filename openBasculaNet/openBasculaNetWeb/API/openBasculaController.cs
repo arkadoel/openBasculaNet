@@ -112,9 +112,117 @@ namespace openBasculaNetWeb.API
             {
                 tactual = listaTransitos.Where(x => x.ID_TRANSITO == idTransito).FirstOrDefault();
                 mod.data = tactual;
-
+                
             }
             return mod;
+        }
+
+        /// <summary>
+        /// Carga un transito desde base de datos
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("API/openBascula/BuscarPRODUCTO")]
+        public List<Models.BuscadorModel> BuscarPRODUCTO(string filtro)
+        {
+            List<Models.BuscadorModel> lista = new List<Models.BuscadorModel>();
+            Models.BuscadorModel mod = null;
+            var listaProductos = Logic_Transitos.ListarProductos(filtro);
+
+            foreach(var producto in listaProductos)
+            {
+                mod = new Models.BuscadorModel()
+                {
+                    Ver = "",
+                    ID_elemento = producto.ID_PRODUCTO,
+                    Descripcion = producto.NOMBRE
+                };
+                lista.Add(mod);
+            }
+
+            return lista;
+        }
+
+        /// <summary>
+        /// Carga un cliente desde base de datos
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("API/openBascula/BuscarCLIENTE")]
+        public List<Models.BuscadorModel> BuscarCLIENTE(string filtro)
+        {
+            List<Models.BuscadorModel> lista = new List<Models.BuscadorModel>();
+            Models.BuscadorModel mod = null;
+            var listaBuscado = Logic_Transitos.ListarEmpresas(filtro);
+
+            foreach (var elemento in listaBuscado)
+            {
+                mod = new Models.BuscadorModel()
+                {
+                    Ver = "",
+                    ID_elemento = elemento.ID_EMPRESA,
+                    Descripcion = elemento.NOMBRE
+                };
+                lista.Add(mod);
+            }
+
+            return lista;
+        }
+
+        /// <summary>
+        /// Carga un POSEEEDOR desde base de datos
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("API/openBascula/BuscarPOSEEDOR")]
+        public List<Models.BuscadorModel> BuscarPOSEEDOR(string filtro)
+        {
+            List<Models.BuscadorModel> lista = new List<Models.BuscadorModel>();
+            Models.BuscadorModel mod = null;
+            var listaBuscado = Logic_Transitos.ListarEmpresas(filtro);
+
+            foreach (var elemento in listaBuscado)
+            {
+                mod = new Models.BuscadorModel()
+                {
+                    Ver = "",
+                    ID_elemento = elemento.ID_EMPRESA,
+                    Descripcion = elemento.NOMBRE
+                };
+                lista.Add(mod);
+            }
+
+            return lista;
+        }
+
+        /// <summary>
+        /// Carga un POSEEEDOR desde base de datos
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("API/openBascula/BuscarPROVEEDOR")]
+        public List<Models.BuscadorModel> BuscarPROVEEDOR(string filtro)
+        {
+            List<Models.BuscadorModel> lista = new List<Models.BuscadorModel>();
+            Models.BuscadorModel mod = null;
+            var listaBuscado = Logic_Transitos.ListarEmpresas(filtro);
+
+            foreach (var elemento in listaBuscado)
+            {
+                mod = new Models.BuscadorModel()
+                {
+                    Ver = "",
+                    ID_elemento = elemento.ID_EMPRESA,
+                    Descripcion = elemento.NOMBRE
+                };
+                lista.Add(mod);
+            }
+
+            return lista;
         }
     }
 }

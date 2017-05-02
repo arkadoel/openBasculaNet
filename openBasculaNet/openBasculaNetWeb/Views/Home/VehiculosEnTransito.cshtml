@@ -33,7 +33,7 @@
      *@
 
     var ESTADO_GUARDADO = "FIN";
-    parent.$('#btnMyModalAceptar').show();
+    parent.$('#btnMyModalAceptar').hide();
     window.onload = thisEndLoad;
     function thisEndLoad() {
         /*iniciamos el resto de valores*/
@@ -50,12 +50,12 @@
         });
 
         buscarTransitos();
-    }
+    }    
 
-    parent.$('#btnMyModalAceptar').click(function () {
-        $('.collapse').collapse("hide");
-        $.when($('#spinner').show("fast").delay(1200)).done(cargarTransito());
-    });
+    function restablecerFiltro() {
+        $('#txtFiltroTexto').val('');
+        buscarTransitos();
+    }
 
     function verTransito(idTransito, mat_cabina) {
 

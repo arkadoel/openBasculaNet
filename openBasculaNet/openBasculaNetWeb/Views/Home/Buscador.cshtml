@@ -1,0 +1,100 @@
+﻿@using openBasculaNet.Core.Structures;
+@{
+    ViewBag.Title = "Buscador";
+    Layout = "~/Views/Shared/_Layoutiframe.cshtml";
+    var tipoBusqueda = (Enumeraciones.TipoBuscador)ViewBag.TipoBusqueda;    
+}
+<input type="hidden" id="hdfUrlBusqueda" name="hdfUrlBusqueda" value="/API/openBascula/Buscar@(tipoBusqueda.ToString())" />
+
+<div class="row">
+    <div class="buscador-transitos col-md-2 ">
+        <h3>Buscador <span class="glyphicon glyphicon-search" /></h3>
+        <label> Matricula o remolque</label>
+        <input type="text" class="col-md-12" id="txtFiltroTexto" />
+        <br /><br /><br />
+
+        <br />
+        <button type="button" class="btn btn-primary btn-openBascula" onclick="buscarporTipos()">BUSCAR</button>
+        <br /><br />
+        <button type="button" class="btn btn-primary btn-openBascula" onclick="restablecerFiltro()">RESTABLECER</button>
+
+        <br /><br />
+    </div>
+    <div class="col-md-10" id="wrp-tbl-buscador-porTipos">
+
+    </div>
+
+    <hr />
+</div>
+
+<script type="text/javascript">
+    var ESTADO_GUARDADO = "FIN";
+    parent.$('#btnMyModalAceptar').hide();
+    window.onload = thisEndLoad;
+    function thisEndLoad() {
+        /*iniciamos el resto de valores*/
+        $('[id*="dtp_"]').each(function () {
+            if ($(this).attr('id').indexOf('_value') == -1) {
+                var idFecha = '#' + $(this).attr('id');
+                //$(idFecha).data("DateTimePicker").locale('es');
+                if ($(idFecha).data('dbvalue') !== '') {
+                    var fecha = dateOrNull($(idFecha).data('dbvalue'));
+                    setFechaPara(idFecha, fecha);
+                }
+                else setFechaPara(idFecha, null);
+            }
+        });
+
+        buscarporTipos();
+    }
+        
+    function buscarporTipos() {
+        $.ajax({
+            type: "GET",
+            url: $('#hdfUrlBusqueda').val(),
+            data: {
+                filtro: $('#txtFiltroTexto').val()
+            },
+            async: true,
+            dataType: "json",
+            headers: {
+                "Accept": "application/json"
+            },
+            success: function (data) {
+                console.log(data);
+                pintarTabla(data);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+    }
+
+    function restablecerFiltro() {
+        $('#txtFiltroTexto').val('');
+        buscarporTipos();
+    }
+
+    function pintarTabla(dataJson) {
+        $('#wrp-tbl-buscador-porTipos').empty();
+        $('#wrp-tbl-buscador-porTipos').append('<table id="tbl-resultados-porTipos" data-classes="table table-hover table-condensed"></table>');
+        $('#tbl-resultados-porTipos').bootstrapTable({
+            columns: [{
+                field: 'Ver',
+                title: 'VER',
+                sortable: false
+            },
+            {
+                field: 'Descripcion',
+                title: 'DESCRIPCION',
+                sortable: true
+            },
+            
+            ],
+            pagination: true,
+            toggle: 'table',
+            data: dataJson
+        });
+    }
+
+</script>

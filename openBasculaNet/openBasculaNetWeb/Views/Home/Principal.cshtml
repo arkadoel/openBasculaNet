@@ -1,4 +1,4 @@
-﻿
+﻿@using openBasculaNet.Core.Structures;
 @{
     ViewBag.Title = "Principal";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -38,42 +38,42 @@
 <div class="row  margin-arriba">
     <label class="col-md-2">PRODUCTO</label>
     <input type="text" class="col-md-9 text-left" id="txtPRODUCTO" data-id=""/>
-    <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <button type="button" class="col-md-1 btn btn-default  btn-openBascula" onclick="abrirBuscador('@Enumeraciones.TipoBuscador.PRODUCTO.ToString()')"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
 <div class="row  margin-arriba">
     <label class="col-md-2">CLIENTE</label>
     <input type="text" class="col-md-9" id="txtCLIENTE" data-id="" />
-    <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <button type="button" class="col-md-1 btn btn-default  btn-openBascula" onclick="abrirBuscador('@Enumeraciones.TipoBuscador.CLIENTE.ToString()')"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
 <div class="row  margin-arriba">
     <label class="col-md-2">PROVEEDOR</label>
     <input type="text" class="col-md-9" id="txtPROVEEDOR" data-id="" />
-    <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <button type="button" class="col-md-1 btn btn-default  btn-openBascula" onclick="abrirBuscador('@Enumeraciones.TipoBuscador.PROVEEDOR.ToString()')"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
 <div class="row  margin-arriba">
     <label class="col-md-2">AGENCIA</label>
     <input type="text" class="col-md-9" id="txtAGENCIA" data-id="" />
-    <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <button type="button" class="col-md-1 btn btn-default  btn-openBascula" onclick="abrirBuscador('@Enumeraciones.TipoBuscador.AGENCIA.ToString()')"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
 <div class="row  margin-arriba">
     <label class="col-md-2">POSEEDOR</label>
     <input type="text" class="col-md-9" id="txtPOSEEDOR" data-id=""/>
-    <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <button type="button" class="col-md-1 btn btn-default  btn-openBascula" onclick="abrirBuscador('@Enumeraciones.TipoBuscador.POSEEDOR.ToString()')"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
 <div class="row  margin-arriba">
     <label class="col-md-2">CONDUCTOR</label>
     <input type="text" class="col-md-9" id="txtCONDUCTOR" data-id=""/>
-    <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <button type="button" class="col-md-1 btn btn-default  btn-openBascula" onclick="abrirBuscador('@Enumeraciones.TipoBuscador.CONDUCTOR.ToString()')"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
 <div class="row  margin-arriba">
     <label class="col-md-2">ORIGEN</label>
     <input type="text" class="col-md-9" id="txtORIGEN" data-id=""/>
-    <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <button type="button" class="col-md-1 btn btn-default  btn-openBascula" onclick="abrirBuscador('@Enumeraciones.TipoBuscador.ORIGEN.ToString()')"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
 <div class="row  margin-arriba">
     <label class="col-md-2">DESTINO</label>
     <input type="text" class="col-md-9" id="txtDESTINO" data-id=""/>
-    <button type="button" class="col-md-1 btn btn-default  btn-openBascula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <button type="button" class="col-md-1 btn btn-default  btn-openBascula" onclick="abrirBuscador('@Enumeraciones.TipoBuscador.DESTINO.ToString()')"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </div>
 <div class="row  margin-arriba">
     <label class="col-md-2">kg. ENTRADA</label>
@@ -238,5 +238,10 @@
 
         function PonerHoraEntrada() {
             $('#txtEntrada').val(getDateWithTimeNow());
+        }
+
+        function abrirBuscador(tipo) {
+            var url = "/Home/Buscador?tipoBusqueda=" + tipo;
+            LaunchModal('Buscador', url);
         }
 </script>

@@ -244,6 +244,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BuscadorModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\TransitoActualModel.cs" />
@@ -970,6 +971,7 @@
     <Content Include="Views\Home\Principal.cshtml" />
     <Content Include="Views\Home\VehiculosEnTransito.cshtml" />
     <Content Include="Views\Shared\_Layoutiframe.cshtml" />
+    <Content Include="Views\Home\Buscador.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

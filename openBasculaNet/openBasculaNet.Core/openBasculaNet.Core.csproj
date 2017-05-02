@@ -75,6 +75,7 @@
     <Compile Include="Structures\EMPRESAS.cs">
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>
+    <Compile Include="Structures\Enumeraciones.cs" />
     <Compile Include="Structures\HISTORICOS.cs">
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>

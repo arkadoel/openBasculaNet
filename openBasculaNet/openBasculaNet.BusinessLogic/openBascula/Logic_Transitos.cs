@@ -88,5 +88,60 @@ namespace openBasculaNet.BusinessLogic.openBascula
             }
             return transitos;
         }
+
+        /// <summary>
+        /// Lista unos productos dependiendo de un filtro
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns></returns>
+        public static List<PRODUCTOS> ListarProductos(string filtro = "")
+        {
+            List<PRODUCTOS> productos = new List<PRODUCTOS>();
+
+            if (manzana.LicenciaActiva())
+            {
+                if (string.IsNullOrWhiteSpace(filtro))
+                {
+                    productos = obnDB.Tablas.PRODUCTOS.ToList();
+                }
+                else
+                {
+                    filtro = filtro.ToUpper();
+                    productos = obnDB.Tablas.PRODUCTOS
+                                    .Where(
+                                            x => (x.NOMBRE.Contains(filtro))
+                                    ).ToList();
+                }
+
+            }
+            return productos;
+        }
+
+        public static List<EMPRESAS> ListarEmpresas(string filtro)
+        {
+            List<EMPRESAS> clientes = new List<EMPRESAS>();
+
+            if (manzana.LicenciaActiva())
+            {
+                if (string.IsNullOrWhiteSpace(filtro))
+                {
+                    clientes = obnDB.Tablas.EMPRESAS.ToList();
+                }
+                else
+                {
+                    filtro = filtro.ToUpper();
+                    clientes = obnDB.Tablas.EMPRESAS
+                                    .Where(
+                                            x => (x.NOMBRE.Contains(filtro))
+                                    ).ToList();
+                }
+
+            }
+            return clientes;
+        }
+
+      
+
+       
     }
 }

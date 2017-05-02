@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [obn].[VEHICULOS] (
-    [ID_VEHICULO]  INT          NOT NULL,
+    [ID_VEHICULO]  INT          NOT NULL IDENTITY,
     [MATRICULA]    VARCHAR (50) NULL,
     [ID_EMPRESA]   INT          NULL,
     [ID_CONDUCTOR] INT          NULL,

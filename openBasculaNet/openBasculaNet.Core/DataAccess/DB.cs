@@ -9,14 +9,14 @@ namespace openBasculaNet.Core.DataAccess
 {
     public class obnDB
     {
-        private static openBasculaNet.Core.Structures.openBasculaNet2017Entities1 bbdd = null;
-        public static openBasculaNet2017Entities1 Tablas
+        private static openBasculaNet.Core.Structures.openBasculaNet2017Entities bbdd = null;
+        public static openBasculaNet2017Entities Tablas
         {
             get
             {
                 if (bbdd == null)
                 { 
-                    bbdd = new openBasculaNet2017Entities1();
+                    bbdd = new openBasculaNet2017Entities();
                     bbdd.Configuration.AutoDetectChangesEnabled = true;
                     bbdd.Configuration.ValidateOnSaveEnabled = false;
                 }
