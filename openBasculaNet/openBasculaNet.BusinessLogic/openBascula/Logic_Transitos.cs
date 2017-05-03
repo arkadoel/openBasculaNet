@@ -117,7 +117,7 @@ namespace openBasculaNet.BusinessLogic.openBascula
             return productos;
         }
 
-        public static List<EMPRESAS> ListarEmpresas(string filtro)
+        public static List<EMPRESAS> ListarEmpresas(string filtro = "")
         {
             List<EMPRESAS> clientes = new List<EMPRESAS>();
 
@@ -140,8 +140,26 @@ namespace openBasculaNet.BusinessLogic.openBascula
             return clientes;
         }
 
-      
+        public static List<CONDUCTORES> ListarConductores(string filtro = "")
+        {
+            List<CONDUCTORES> conductor = new List<CONDUCTORES>();
 
-       
+            if (manzana.LicenciaActiva())
+            {
+                if (string.IsNullOrWhiteSpace(filtro))
+                {
+                    conductor = obnDB.Tablas.CONDUCTORES.ToList();
+                }
+                else
+                {
+                    filtro = filtro.ToUpper();
+                    conductor = obnDB.Tablas.CONDUCTORES
+                                    .Where(
+                                            x => (x.NOMBRE.Contains(filtro))
+                                    ).ToList();
+                }
+            }
+            return conductor;
+        }
     }
 }

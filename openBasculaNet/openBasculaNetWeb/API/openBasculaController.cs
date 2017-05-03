@@ -126,6 +126,8 @@ namespace openBasculaNetWeb.API
         [Route("API/openBascula/BuscarPRODUCTO")]
         public List<Models.BuscadorModel> BuscarPRODUCTO(string filtro)
         {
+            string style = "height: 24px !important; width: 24px !important; margin-right: 15px !important; font-size: 24px !important; vertical-align: middle !important; color: #00796b !important;";
+
             List<Models.BuscadorModel> lista = new List<Models.BuscadorModel>();
             Models.BuscadorModel mod = null;
             var listaProductos = Logic_Transitos.ListarProductos(filtro);
@@ -134,7 +136,7 @@ namespace openBasculaNetWeb.API
             {
                 mod = new Models.BuscadorModel()
                 {
-                    Ver = "",
+                    Ver = "<span class=\"glyphicon glyphicon-list-alt \" aria-hidden='true' style='" + style + "' onclick=\"verElemento(" + producto.ID_PRODUCTO + ", '" + producto.NOMBRE + "', 'PRODUCTO')\"></span>",
                     ID_elemento = producto.ID_PRODUCTO,
                     Descripcion = producto.NOMBRE
                 };
@@ -153,6 +155,8 @@ namespace openBasculaNetWeb.API
         [Route("API/openBascula/BuscarCLIENTE")]
         public List<Models.BuscadorModel> BuscarCLIENTE(string filtro)
         {
+            string style = "height: 24px !important; width: 24px !important; margin-right: 15px !important; font-size: 24px !important; vertical-align: middle !important; color: #00796b !important;";
+
             List<Models.BuscadorModel> lista = new List<Models.BuscadorModel>();
             Models.BuscadorModel mod = null;
             var listaBuscado = Logic_Transitos.ListarEmpresas(filtro);
@@ -161,7 +165,7 @@ namespace openBasculaNetWeb.API
             {
                 mod = new Models.BuscadorModel()
                 {
-                    Ver = "",
+                    Ver = "<span class=\"glyphicon glyphicon-list-alt \" aria-hidden='true' style='" + style + "' onclick=\"verElemento(" + elemento.ID_EMPRESA + ", '" + elemento.NOMBRE + "', 'CLIENTE')\"></span>",
                     ID_elemento = elemento.ID_EMPRESA,
                     Descripcion = elemento.NOMBRE
                 };
@@ -180,6 +184,8 @@ namespace openBasculaNetWeb.API
         [Route("API/openBascula/BuscarPOSEEDOR")]
         public List<Models.BuscadorModel> BuscarPOSEEDOR(string filtro)
         {
+            string style = "height: 24px !important; width: 24px !important; margin-right: 15px !important; font-size: 24px !important; vertical-align: middle !important; color: #00796b !important;";
+
             List<Models.BuscadorModel> lista = new List<Models.BuscadorModel>();
             Models.BuscadorModel mod = null;
             var listaBuscado = Logic_Transitos.ListarEmpresas(filtro);
@@ -188,7 +194,7 @@ namespace openBasculaNetWeb.API
             {
                 mod = new Models.BuscadorModel()
                 {
-                    Ver = "",
+                    Ver = "<span class=\"glyphicon glyphicon-list-alt \" aria-hidden='true' style='" + style + "' onclick=\"verElemento(" + elemento.ID_EMPRESA + ", '" + elemento.NOMBRE + "', 'POSEEDOR')\"></span>",
                     ID_elemento = elemento.ID_EMPRESA,
                     Descripcion = elemento.NOMBRE
                 };
@@ -199,7 +205,7 @@ namespace openBasculaNetWeb.API
         }
 
         /// <summary>
-        /// Carga un POSEEEDOR desde base de datos
+        /// Carga un PROVEEDOR desde base de datos
         /// </summary>
         /// <param name="filtro"></param>
         /// <returns></returns>
@@ -207,6 +213,8 @@ namespace openBasculaNetWeb.API
         [Route("API/openBascula/BuscarPROVEEDOR")]
         public List<Models.BuscadorModel> BuscarPROVEEDOR(string filtro)
         {
+            string style = "height: 24px !important; width: 24px !important; margin-right: 15px !important; font-size: 24px !important; vertical-align: middle !important; color: #00796b !important;";
+
             List<Models.BuscadorModel> lista = new List<Models.BuscadorModel>();
             Models.BuscadorModel mod = null;
             var listaBuscado = Logic_Transitos.ListarEmpresas(filtro);
@@ -215,9 +223,67 @@ namespace openBasculaNetWeb.API
             {
                 mod = new Models.BuscadorModel()
                 {
-                    Ver = "",
+                    Ver = "<span class=\"glyphicon glyphicon-list-alt \" aria-hidden='true' style='" + style + "' onclick=\"verElemento(" + elemento.ID_EMPRESA + ", '" + elemento.NOMBRE + "', 'PROVEEDOR')\"></span>",
                     ID_elemento = elemento.ID_EMPRESA,
                     Descripcion = elemento.NOMBRE
+                };
+                lista.Add(mod);
+            }
+
+            return lista;
+        }
+
+        /// <summary>
+        /// Carga un AGENCIA desde base de datos
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("API/openBascula/BuscarAGENCIA")]
+        public List<Models.BuscadorModel> BuscarAGENCIA(string filtro)
+        {
+            string style = "height: 24px !important; width: 24px !important; margin-right: 15px !important; font-size: 24px !important; vertical-align: middle !important; color: #00796b !important;";
+
+            List<Models.BuscadorModel> lista = new List<Models.BuscadorModel>();
+            Models.BuscadorModel mod = null;
+            var listaBuscado = Logic_Transitos.ListarEmpresas(filtro);
+
+            foreach (var elemento in listaBuscado)
+            {
+                mod = new Models.BuscadorModel()
+                {
+                    Ver = "<span class=\"glyphicon glyphicon-list-alt \" aria-hidden='true' style='" + style + "' onclick=\"verElemento(" + elemento.ID_EMPRESA + ", '" + elemento.NOMBRE + "', 'AGENCIA')\"></span>",
+                    ID_elemento = elemento.ID_EMPRESA,
+                    Descripcion = elemento.NOMBRE
+                };
+                lista.Add(mod);
+            }
+
+            return lista;
+        }
+
+        /// <summary>
+        /// Carga un CONDUCTOR desde base de datos
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("API/openBascula/BuscarCONDUCTOR")]
+        public List<Models.BuscadorModel> BuscarCONDUCTOR(string filtro)
+        {
+            string style = "height: 24px !important; width: 24px !important; margin-right: 15px !important; font-size: 24px !important; vertical-align: middle !important; color: #00796b !important;";
+
+            List<Models.BuscadorModel> lista = new List<Models.BuscadorModel>();
+            Models.BuscadorModel mod = null;
+            var listaBuscado = Logic_Transitos.ListarConductores(filtro);
+
+            foreach (var elemento in listaBuscado)
+            {
+                mod = new Models.BuscadorModel()
+                {
+                    Ver = "<span class=\"glyphicon glyphicon-list-alt \" aria-hidden='true' style='" + style + "' onclick=\"verElemento(" + elemento.ID_CONDUCTOR + ", '" + (elemento.NOMBRE + " " + elemento.APELLIDOS) + "', 'CONDUCTOR')\"></span>",
+                    ID_elemento = elemento.ID_CONDUCTOR,
+                    Descripcion = elemento.NOMBRE + " " +  elemento.APELLIDOS
                 };
                 lista.Add(mod);
             }

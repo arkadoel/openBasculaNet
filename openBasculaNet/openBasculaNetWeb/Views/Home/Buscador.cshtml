@@ -75,6 +75,13 @@
         buscarporTipos();
     }
 
+    function verElemento(id, nombre, tipo) {
+        
+        parent.$('#txt' + tipo).val(nombre);
+        parent.$('#txt' + tipo).data('id', id);    
+        parent.$('#myModal').modal('toggle');
+    }
+
     function pintarTabla(dataJson) {
         $('#wrp-tbl-buscador-porTipos').empty();
         $('#wrp-tbl-buscador-porTipos').append('<table id="tbl-resultados-porTipos" data-classes="table table-hover table-condensed"></table>');

@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [obn].[CONDUCTORES] (
-    [ID_CONDUCTOR] INT          NOT NULL,
+    [ID_CONDUCTOR] INT          NOT NULL IDENTITY,
     [ID_EMPRESA]   INT          NULL,
     [FECHA_ALTA]   DATE         NULL,
     [FECHA_BAJA]   DATE         NULL,

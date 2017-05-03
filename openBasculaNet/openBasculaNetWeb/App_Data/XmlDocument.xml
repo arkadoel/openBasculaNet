@@ -57,7 +57,21 @@
         </member>
         <member name="M:openBasculaNetWeb.API.openBasculaController.BuscarPROVEEDOR(System.String)">
             <summary>
-            Carga un POSEEEDOR desde base de datos
+            Carga un PROVEEDOR desde base de datos
+            </summary>
+            <param name="filtro"></param>
+            <returns></returns>
+        </member>
+        <member name="M:openBasculaNetWeb.API.openBasculaController.BuscarAGENCIA(System.String)">
+            <summary>
+            Carga un AGENCIA desde base de datos
+            </summary>
+            <param name="filtro"></param>
+            <returns></returns>
+        </member>
+        <member name="M:openBasculaNetWeb.API.openBasculaController.BuscarCONDUCTOR(System.String)">
+            <summary>
+            Carga un CONDUCTOR desde base de datos
             </summary>
             <param name="filtro"></param>
             <returns></returns>

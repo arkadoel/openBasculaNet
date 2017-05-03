@@ -30,12 +30,12 @@ namespace openBasculaNet.Core.Structures
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<CONDUCTORES> CONDUCTORES { get; set; }
         public virtual DbSet<CONFIGURACIONES> CONFIGURACIONES { get; set; }
         public virtual DbSet<EMPRESAS> EMPRESAS { get; set; }
         public virtual DbSet<HISTORICOS> HISTORICOS { get; set; }
         public virtual DbSet<PRODUCTOS> PRODUCTOS { get; set; }
         public virtual DbSet<TRANSITO_ACTUALES> TRANSITO_ACTUALES { get; set; }
         public virtual DbSet<VEHICULOS> VEHICULOS { get; set; }
+        public virtual DbSet<CONDUCTORES> CONDUCTORES { get; set; }
     }
 }
