@@ -44,13 +44,13 @@
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="margin: 0 auto;">
-        <div class="modal-dialog" role="document" style="width: 98%; height: 98%; max-width: 1170px; max-height: 98%;">
-            <div class="modal-content" style="width: 98%; height: 98%; max-width: 1170px; max-height: 98%;">
+        <div class="modal-dialog" role="document" style="width: 98%; height: 95%; max-width: 1170px; max-height: 95%;">
+            <div class="modal-content" style="width: 98%; height: 95%; max-width: 1170px; max-height: 95%;">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
-                <div class="modal-body" style="height:87%; padding: 0px;">
+                <div class="modal-body" style="height:85%; padding: 0px;">
                     <iframe id="myModalURL" frameborder="0" style="height: 100%; width: 100%; margin: 0;"></iframe>
                 </div>
                 <div class="modal-footer">
@@ -166,7 +166,7 @@
             function pad(s) { return (s < 10) ? '0' + s : s; }
             var d = new Date();
             var dia = [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
-            var hora = [pad(d.getHours()), pad(d.getMinutes()), d.getSeconds()].join(':')
+            var hora = [pad(d.getHours()), pad(d.getMinutes()), pad(d.getSeconds())].join(':')
             var tiempo = dia + " " + hora;
             return tiempo;
         }
@@ -176,7 +176,7 @@
             function pad(s) { return (s < 10) ? '0' + s : s; }
             var d = new Date(inputFormat);
             var dia = [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
-            var hora = [pad(d.getHours()), pad(d.getMinutes()), d.getSeconds()].join(':')
+            var hora = [pad(d.getHours()), pad(d.getMinutes()), pad(d.getSeconds())].join(':')
             var tiempo = dia + " " + hora;
             return tiempo;
         }

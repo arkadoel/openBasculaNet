@@ -112,10 +112,20 @@ namespace openBasculaNetWeb.API
             {
                 tactual = listaTransitos.Where(x => x.ID_TRANSITO == idTransito).FirstOrDefault();
                 mod.data = tactual;
-                
+                mod.TEXTO_PRODUCTO = Logic_Transitos.ObtenerProductoPorID(tactual.ID_PRODUCTO).NOMBRE;
+                mod.TEXTO_AGENCIA = Logic_Transitos.ObtenerEmpresaPorID(tactual.ID_AGENCIA).NOMBRE;
+                mod.TEXTO_CLIENTE = Logic_Transitos.ObtenerEmpresaPorID(tactual.ID_CLIENTE).NOMBRE;
+                mod.TEXTO_POSEEDOR = Logic_Transitos.ObtenerEmpresaPorID(tactual.ID_POSEEDOR).NOMBRE;
+                mod.TEXTO_PROVEEDOR = Logic_Transitos.ObtenerEmpresaPorID(tactual.ID_PROVEEDOR).NOMBRE;
+
+                string nombreConductor = string.Format("{0} {1}", Logic_Transitos.ObtenerConductorPorID(tactual.ID_CONDUCTOR).NOMBRE,
+                                                                  Logic_Transitos.ObtenerConductorPorID(tactual.ID_CONDUCTOR).APELLIDOS);
+                mod.TEXTO_CONDUCTOR = nombreConductor;
             }
             return mod;
         }
+
+    #region "   BUSCADORES"
 
         /// <summary>
         /// Carga un transito desde base de datos
@@ -289,6 +299,21 @@ namespace openBasculaNetWeb.API
             }
 
             return lista;
+        }
+
+#endregion //buscadores
+
+        /// <summary>
+        /// Permite obtener los datos de una empresa dpendiendo de su id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("API/openBascula/ObtenerEmpresaById")]
+        public EMPRESAS ObtenerEmpresaById(int id)
+        {
+            EMPRESAS empresaBuscada = Logic_Transitos.ListarEmpresas().Where(x => x.ID_EMPRESA == id).FirstOrDefault();
+            return empresaBuscada;
         }
     }
 }

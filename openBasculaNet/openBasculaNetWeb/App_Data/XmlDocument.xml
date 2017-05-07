@@ -76,6 +76,13 @@
             <param name="filtro"></param>
             <returns></returns>
         </member>
+        <member name="M:openBasculaNetWeb.API.openBasculaController.ObtenerEmpresaById(System.Int32)">
+            <summary>
+            Permite obtener los datos de una empresa dpendiendo de su id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:openBasculaNetWeb.Startup.DisableApplicationInsightsOnDebug">
             <summary>
             Disables the application insights locally.

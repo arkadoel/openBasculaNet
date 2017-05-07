@@ -173,30 +173,36 @@
                 "DESTINO": $('#txtDESTINO').val()
             };
 
-            console.log(JSON.stringify(jsonTransito));
-            $.ajax({
-                type: "PUT",
-                url: '/API/openBascula/GuardarTransito?fechaEntrada=' + $('#txtEntrada').val(),
-                data: jsonTransito,
-                async: true,
-                dataType: "json",
-                headers: {
-                    "Accept": "application/json"
-                },
-                success: function (data) {
-                    if (data === true) {
-                        LaunchModalMensajes("Guardado correcto", "Guardado");
-                        LimpiarCampos();
+            var cabina = replaceAll(' ', '', jsonTransito.MAT_CABINA);
+            console.log(cabina.length);
+            if (cabina.length != 0) {
+                $.ajax({
+                    type: "PUT",
+                    url: '/API/openBascula/GuardarTransito?fechaEntrada=' + $('#txtEntrada').val(),
+                    data: jsonTransito,
+                    async: true,
+                    dataType: "json",
+                    headers: {
+                        "Accept": "application/json"
+                    },
+                    success: function (data) {
+                        if (data === true) {
+                            LaunchModalMensajes("Guardado correcto", "Guardado");
+                            LimpiarCampos();
+                        }
+                        else {
+                            //error
+                            LaunchModalMensajesError("Error al guardar", "Guardado fallido");
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(errorThrown);
                     }
-                    else {
-                        //error
-                        LaunchModalMensajesError("Error al guardar", "Guardado fallido");
-                    }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(errorThrown);
-                }
-            });
+                });
+            }
+            else {
+                LaunchModalMensajesError("Error al guardar", "Debe rellenar al menos el campo CABINA");
+            }
         }
 
         function LimpiarCampos() {

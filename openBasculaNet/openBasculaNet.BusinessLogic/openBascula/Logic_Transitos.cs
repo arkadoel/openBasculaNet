@@ -117,6 +117,29 @@ namespace openBasculaNet.BusinessLogic.openBascula
             return productos;
         }
 
+        /// <summary>
+        /// Permite obtener un producto segun su id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static PRODUCTOS ObtenerProductoPorID(int? id)
+        {
+            PRODUCTOS obj = new PRODUCTOS();
+
+            if (manzana.LicenciaActiva() && id.HasValue)
+            {
+                var query = obnDB.Tablas.PRODUCTOS.Where(x => (x.ID_PRODUCTO == id)).FirstOrDefault();
+
+                if (query != null) obj = query;
+            }
+            return obj;
+        }
+
+        /// <summary>
+        /// Listar las empresas segun un filtro
+        /// </summary>
+        /// <param name="filtro">filtro por nombre (opcional)</param>
+        /// <returns></returns>
         public static List<EMPRESAS> ListarEmpresas(string filtro = "")
         {
             List<EMPRESAS> clientes = new List<EMPRESAS>();
@@ -140,6 +163,29 @@ namespace openBasculaNet.BusinessLogic.openBascula
             return clientes;
         }
 
+        /// <summary>
+        /// Obtener una empresa por su id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static EMPRESAS ObtenerEmpresaPorID(int? id )
+        {
+            EMPRESAS cliente = new EMPRESAS();
+
+            if (manzana.LicenciaActiva() && id.HasValue)
+            {
+                var empresa = obnDB.Tablas.EMPRESAS.Where(x => (x.ID_EMPRESA == id)).FirstOrDefault();
+
+                if (empresa != null) cliente = empresa;
+            }
+            return cliente;
+        }
+
+        /// <summary>
+        /// Listar los conductores
+        /// </summary>
+        /// <param name="filtro">filtro por nombre (opcional)</param>
+        /// <returns></returns>
         public static List<CONDUCTORES> ListarConductores(string filtro = "")
         {
             List<CONDUCTORES> conductor = new List<CONDUCTORES>();
@@ -155,11 +201,29 @@ namespace openBasculaNet.BusinessLogic.openBascula
                     filtro = filtro.ToUpper();
                     conductor = obnDB.Tablas.CONDUCTORES
                                     .Where(
-                                            x => (x.NOMBRE.Contains(filtro))
+                                            x => (x.NOMBRE.Contains(filtro) || x.APELLIDOS.Contains(filtro))
                                     ).ToList();
                 }
             }
             return conductor;
+        }
+
+        /// <summary>
+        /// Obtener un conductor por su id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static CONDUCTORES ObtenerConductorPorID(int? id)
+        {
+            CONDUCTORES obj = new CONDUCTORES();
+
+            if (manzana.LicenciaActiva() && id.HasValue)
+            {
+                var query = obnDB.Tablas.CONDUCTORES.Where(x => (x.ID_CONDUCTOR == id)).FirstOrDefault();
+
+                if (query != null) obj = query;
+            }
+            return obj;
         }
     }
 }

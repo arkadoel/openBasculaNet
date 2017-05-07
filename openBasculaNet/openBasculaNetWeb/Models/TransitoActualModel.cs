@@ -15,6 +15,7 @@ namespace openBasculaNetWeb.Models
 
         public TRANSITO_ACTUALES data { get; set; }
 
+        public string TEXTO_PRODUCTO { get; set; }
         public string TEXTO_POSEEDOR { get; set; }
         public string TEXTO_AGENCIA { get; set; }
         public string TEXTO_PROVEEDOR { get; set; }
