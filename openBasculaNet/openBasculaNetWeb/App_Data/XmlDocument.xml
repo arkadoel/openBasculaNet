@@ -565,10 +565,134 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="T:openBasculaNetWeb.Controllers.HomeController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:openBasculaNetWeb.Controllers.HomeController.Index">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:openBasculaNetWeb.Controllers.HomeController.About">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:openBasculaNetWeb.Controllers.HomeController.Contact">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:openBasculaNetWeb.Controllers.HomeController.Principal">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:openBasculaNetWeb.Controllers.HomeController.VehiculosEnTransito">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:openBasculaNetWeb.Controllers.HomeController.Buscador(openBasculaNet.Core.Structures.Enumeraciones.TipoBuscador)">
+            <summary>
+            
+            </summary>
+            <param name="tipoBusqueda"></param>
+            <returns></returns>
+        </member>
         <member name="P:openBasculaNetWeb.Models.TransitoActualModel.Ver">
             <summary>
             string que pone la ruta a la llamada para ver este elemento
             </summary>
+        </member>
+        <member name="M:openBasculaNetWeb.Reports.Index.Page_Load(System.Object,System.EventArgs)">
+            <summary>
+            Inicio de la pagina
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:openBasculaNetWeb.Reports.Index.ReportingTempDir">
+            <summary>
+            Genera/obtiene la ruta de temporales
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:openBasculaNetWeb.Reports.Index.EliminarFicherosTemporales">
+            <summary>
+            elimina de forma asincrona los ficheros temporales 
+            </summary>
+        </member>
+        <member name="M:openBasculaNetWeb.Reports.Index.LoadViews">
+            <summary>
+            Zona en la que se cargan los datos para los informes
+            </summary>
+        </member>
+        <member name="F:openBasculaNetWeb.Reports.Index.form1">
+            <summary>
+            form1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:openBasculaNetWeb.Reports.Index.cmbExportFormat">
+            <summary>
+            cmbExportFormat control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:openBasculaNetWeb.Reports.Index.btnExportar">
+            <summary>
+            btnExportar control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:openBasculaNetWeb.Reports.Index.btnImprimir">
+            <summary>
+            btnImprimir control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:openBasculaNetWeb.Reports.Index.ReportViewer1">
+            <summary>
+            ReportViewer1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="T:SqlServerTypes.Utilities">
+            <summary>
+            Utility methods related to CLR Types for SQL Server 
+            </summary>
+        </member>
+        <member name="M:SqlServerTypes.Utilities.LoadNativeAssemblies(System.String)">
+            <summary>
+            Loads the required native assemblies for the current architecture (x86 or x64)
+            </summary>
+            <param name="rootApplicationPath">
+            Root path of the current application. Use Server.MapPath(".") for ASP.NET applications
+            and AppDomain.CurrentDomain.BaseDirectory for desktop applications.
+            </param>
         </member>
     </members>
 </doc>

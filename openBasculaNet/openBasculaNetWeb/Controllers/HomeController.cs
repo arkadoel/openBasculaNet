@@ -10,13 +10,24 @@ using openBasculaNet.Core.Structures;
 
 namespace openBasculaNetWeb.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class HomeController : Controller
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -24,6 +35,10 @@ namespace openBasculaNetWeb.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Contact()
         {
             ViewBag.Message = "Datos de contacto:";
@@ -31,11 +46,21 @@ namespace openBasculaNetWeb.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [Authorize]
         public ActionResult Principal()
-        {
+        {            
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [Authorize]
         public ActionResult VehiculosEnTransito()
         {
             List<TRANSITO_ACTUALES> transitos = Logic_Transitos.ListarTransitosActuales();
@@ -43,6 +68,12 @@ namespace openBasculaNetWeb.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tipoBusqueda"></param>
+        /// <returns></returns>
+        [Authorize]
         public ActionResult Buscador(Enumeraciones.TipoBuscador tipoBusqueda)
         {
             ViewBag.TipoBusqueda = tipoBusqueda;

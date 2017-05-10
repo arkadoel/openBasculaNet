@@ -97,6 +97,8 @@
     <Compile Include="Structures\PRODUCTOS.cs">
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>
+    <Compile Include="Structures\Reporting\InformeAlbaran.cs" />
+    <Compile Include="Structures\Reporting\ReportParameters.cs" />
     <Compile Include="Structures\TRANSITO_ACTUALES.cs">
       <DependentUpon>ModeloDatos.tt</DependentUpon>
     </Compile>

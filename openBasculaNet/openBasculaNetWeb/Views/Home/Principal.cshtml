@@ -12,6 +12,7 @@
     <button type="button" class="col-md-2 btn btn-default btn-openBascula  " onclick="GuardarTransito()"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>&nbsp; GUARDAR</button>
     
     <button type="button" class="col-md-offset-1 col-md-2 btn btn-default btn-openBascula" onclick="verEnTransito()"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>&nbsp; EN TRANSITO</button>
+    <button type="button" class="col-md-offset-5 col-md-2 btn btn-default btn-openBascula" onclick="imprimirTransito()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp; IMPRIMIR</button>
 </div>
 <hr />
 <div class="row  margin-arriba">
@@ -249,5 +250,18 @@
         function abrirBuscador(tipo) {
             var url = "/Home/Buscador?tipoBusqueda=" + tipo;
             LaunchModal('Buscador', url);
+        }
+
+        /**
+         * Se encarga de finalizar e imprmir el transito 
+         */
+        function imprimirTransito() {
+            if ($('#hdfIdTransito').val() === '-1') {
+                LaunchModalMensajes("Seleccione un transito ", "Error al ver informe");
+            }
+            else {
+                var url = '/Reports/index.aspx?report=informeAlbaran.rdlc&openBasculaViewName=informeAlbaranReport&idTransito=' + $('#hdfIdTransito').val();
+                LaunchModal('Albaran de transito', url);
+            }
         }
 </script>
