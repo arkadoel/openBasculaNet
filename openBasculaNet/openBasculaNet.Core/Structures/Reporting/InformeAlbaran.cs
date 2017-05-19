@@ -8,7 +8,7 @@ namespace openBasculaNet.Core.Structures.Reporting
 {
     public class InformeAlbaran : ReportParameters
     {
-        public int IdTransito { get; set; }
+        public int IdHistorico { get; set; }
 
         public Dictionary<string, string> ParametrosReporte
         {

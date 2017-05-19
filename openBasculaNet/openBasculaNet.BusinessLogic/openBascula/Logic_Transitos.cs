@@ -59,6 +59,94 @@ namespace openBasculaNet.BusinessLogic.openBascula
                 }
             }
             else return false;
+        }        
+
+        /// <summary>
+        /// Guarda los datos de camion en transito en el historial y elimina 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static int GuardarTransitoEnHistorico(int idTransito)
+        {
+            if (manzana.LicenciaActiva())
+            {
+                try
+                {
+                    TRANSITO_ACTUALES transitoDB = null;
+                    transitoDB = obnDB.Tablas.TRANSITO_ACTUALES.Where(x => x.ID_TRANSITO == idTransito).FirstOrDefault();
+
+                    HISTORICOS historico = new HISTORICOS();
+                    #region Parsear el transito a objeto historico para guardarlo en historicos
+
+                    historico.NUM_ALBARAN = transitoDB.NUM_ALBARAN;
+                    historico.MAT_CABINA = transitoDB.MAT_CABINA;
+                    historico.MAT_REMOLQUE = transitoDB.MAT_REMOLQUE;
+                        
+                    historico.ORIGEN = transitoDB.ORIGEN;
+                    historico.DESTINO = transitoDB.DESTINO;
+                    historico.FECHA_ENTRADA = transitoDB.FECHA_ENTRADA;
+                    historico.FECHA_SALIDA = DateTime.Now;
+
+                    var agencia = obnDB.Tablas.EMPRESAS.Where(x =>x.ID_EMPRESA == transitoDB.ID_AGENCIA).First();
+                    historico.CIF_AGENCIA = agencia.CIF;
+                    historico.COD_CONTA_AGENCIA = agencia.CODIGO_CONTABLE;
+                    historico.DIRECCION_AGENCIA = agencia.DIRECCION;
+                    historico.RAZON_SOCIAL_AGENCIA = agencia.RAZON_SOCIAL;
+                    historico.TLF_AGENCIA = agencia.TELEFONO;
+                    historico.UBICACION_AGENCIA = agencia.PROVINCIA;
+
+                    var cliente = obnDB.Tablas.EMPRESAS.Where(x => x.ID_EMPRESA == transitoDB.ID_CLIENTE).First();
+                    historico.CIF_CLIENTE = cliente.CIF;
+                    historico.COD_CONTA_CLIENTE = cliente.CODIGO_CONTABLE;
+                    historico.DIRECCION_CLIENTE = cliente.DIRECCION;
+                    historico.RAZON_SOCIAL_CLIENTE = cliente.RAZON_SOCIAL;
+                    historico.TLF_CLIENTE = cliente.TELEFONO;
+                    historico.UBICACION_CLIENTE = cliente.PROVINCIA;
+
+                    var conductor = obnDB.Tablas.CONDUCTORES.Where(x => x.ID_CONDUCTOR == transitoDB.ID_CONDUCTOR).First();
+                    historico.DIRECCION_CONDUCTOR = conductor.DIRECCION;
+                    historico.NIF_CONDUCTOR = conductor.NIF;
+                    historico.NOMBRE_CONDUCTOR = conductor.NOMBRE + " " + conductor.APELLIDOS;
+                    historico.TLF_CONDUCTOR = conductor.TELEFONO;
+                    historico.UBICACION_CONDUCTOR = conductor.PROVINCIA;
+
+                    var POSEEDOR = obnDB.Tablas.EMPRESAS.Where(x => x.ID_EMPRESA == transitoDB.ID_POSEEDOR).First();
+                    historico.CIF_POSEEDOR = POSEEDOR.CIF;
+                    historico.COD_CONTA_POSEEDOR = POSEEDOR.CODIGO_CONTABLE;
+                    historico.DIRECCION_POSEEDOR = POSEEDOR.DIRECCION;
+                    historico.RAZON_SOCIAL_POSEEDOR = POSEEDOR.RAZON_SOCIAL;
+                    historico.TLF_POSEEDOR = POSEEDOR.TELEFONO;
+                    historico.UBICACION_POSEEDOR = POSEEDOR.PROVINCIA;
+
+                    var producto = obnDB.Tablas.PRODUCTOS.Where(x=> x.ID_PRODUCTO == transitoDB.ID_PRODUCTO).First();
+                    historico.IMPORTE_PRODUCTO = producto.PRECIO.ToString();
+                    historico.NOMBRE_PRODUCTO = producto.NOMBRE;
+
+                    var PROVEEDOR = obnDB.Tablas.EMPRESAS.Where(x => x.ID_EMPRESA == transitoDB.ID_PROVEEDOR).First();
+                    historico.CIF_PROVEEDOR = PROVEEDOR.CIF;
+                    historico.COD_CONTA_PROVEEDOR = PROVEEDOR.CODIGO_CONTABLE;
+                    historico.DIRECCION_PROVEEDOR = PROVEEDOR.DIRECCION;
+                    historico.RAZON_SOCIAL_PROVEEDOR = PROVEEDOR.RAZON_SOCIAL;
+                    historico.TLF_PROVEEDOR = PROVEEDOR.TELEFONO;
+                    historico.UBICACION_PROVEEDOR = PROVEEDOR.PROVINCIA;
+
+                    #endregion //Parsear el transito a objeto historico para guardarlo en historicos
+
+                    obnDB.Tablas.HISTORICOS.Add(historico);
+                    obnDB.Save();
+
+                    //Si se ha guardado con exito eliminamos el transito actual
+                    obnDB.Tablas.TRANSITO_ACTUALES.Remove(transitoDB);
+                    obnDB.Save();
+
+                    return historico.ID_HISTORICO;                    
+                }
+                catch (Exception ex)
+                {
+                    return -1;
+                }
+            }
+            else return -1;
         }
 
         /// <summary>

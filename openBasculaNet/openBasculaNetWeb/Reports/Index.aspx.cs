@@ -4,14 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System;
-using System.Collections.Generic;
-using System.Drawing.Printing;
 using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Microsoft.Reporting.WebForms;
 
 namespace openBasculaNetWeb.Reports
@@ -56,6 +49,11 @@ namespace openBasculaNetWeb.Reports
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnExportar_Click(object sender, EventArgs e)
         {
             if (cmbExportFormat.Text.ToUpper() == "PDF") ExportarPDF();
@@ -230,11 +228,11 @@ namespace openBasculaNetWeb.Reports
                     var informe = new openBasculaNet.Core.Structures.Reporting.InformeAlbaran();
                     informe.ReportPath = ReportPath;
                     informe.ViewName = ViewName;
-                    informe.IdTransito = Convert.ToInt32(Request.Params["idTransito"]);
+                    informe.IdHistorico = Convert.ToInt32(Request.Params["idHistorico"]);
                     informe.ParametrosReporte = new Dictionary<string, string>()
-                            {
-                                {"startDate" , "32" }
-                            };
+                    {
+                        {"startDate" , "32" }
+                    };
                     parametrosInforme = informe.ParametrosReporte;
 
                     break;

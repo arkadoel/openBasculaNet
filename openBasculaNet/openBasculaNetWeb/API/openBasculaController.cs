@@ -95,6 +95,29 @@ namespace openBasculaNetWeb.API
         }
 
         /// <summary>
+        /// Guarda los datos de un transito en base de datos
+        /// </summary>
+        /// <param name="jsonTransito"></param>
+        /// <param name="fechaEntrada"></param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route("API/openBascula/GuardarEnHistorico")]
+        public int GuardarEnHistorico(TRANSITO_ACTUALES jsonTransito, string fechaEntrada)
+        {
+            jsonTransito.FECHA_ENTRADA = Convertidores.DateFromString(fechaEntrada);
+            jsonTransito.MAT_CABINA = jsonTransito.MAT_CABINA.ToUpper();
+            jsonTransito.MAT_REMOLQUE = jsonTransito.MAT_REMOLQUE.ToUpper();
+            bool guardadoEnDB = Logic_Transitos.GuardarTransito(jsonTransito);
+
+            if (guardadoEnDB)
+            {
+                return Logic_Transitos.GuardarTransitoEnHistorico(jsonTransito.ID_TRANSITO);
+            }
+            else return -1;
+
+        }
+
+        /// <summary>
         /// Carga un transito desde base de datos
         /// </summary>
         /// <param name="matCabina"></param>

@@ -150,7 +150,7 @@
             calcularNETO();
         }
 
-        function GuardarTransito() {
+        function GenerarJsonTransito() {
             var jsonTransito = {
                 "ID_TRANSITO": parseInt($('#hdfIdTransito').val()),
                 "NUM_ALBARAN": $('hdfNumAlbaran').val(),
@@ -173,9 +173,13 @@
                 "ORIGEN": $('#txtORIGEN').val(),
                 "DESTINO": $('#txtDESTINO').val()
             };
+            return jsonTransito;
+        }
+        function GuardarTransito() {
+            var jsonTransito = GenerarJsonTransito();
 
             var cabina = replaceAll(' ', '', jsonTransito.MAT_CABINA);
-            console.log(cabina.length);
+            //console.log(cabina.length);
             if (cabina.length != 0) {
                 $.ajax({
                     type: "PUT",
@@ -260,8 +264,43 @@
                 LaunchModalMensajes("Seleccione un transito ", "Error al ver informe");
             }
             else {
-                var url = '/Reports/index.aspx?report=informeAlbaran.rdlc&openBasculaViewName=informeAlbaranReport&idTransito=' + $('#hdfIdTransito').val();
-                LaunchModal('Albaran de transito', url);
+
+                var jsonTransito = GenerarJsonTransito();
+
+                var cabina = replaceAll(' ', '', jsonTransito.MAT_CABINA);
+                
+                if (cabina.length != 0) {
+                    $.ajax({
+                        type: "PUT",
+                        url: '/API/openBascula/GuardarEnHistorico?fechaEntrada=' + $('#txtEntrada').val(),
+                        data: jsonTransito,
+                        async: true,
+                        dataType: "json",
+                        headers: {
+                            "Accept": "application/json"
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            if (data === -1) {
+                                LaunchModalMensajesError("Error al guardar en historico", "Guardado fallido");
+                            }
+                            else {
+                                //como ya se ha guardado, podemos proceder a imprimir
+                                var url = '/Reports/index.aspx?report=informeAlbaran.rdlc&openBasculaViewName=informeAlbaranReport&idHistorico=' + data;
+                                LaunchModal('Albaran de transito', url);
+
+                                LimpiarCampos();
+                            }                            
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(errorThrown);
+                        }
+                    });
+                }
+                else {
+                    LaunchModalMensajesError("Error al guardar", "Debe rellenar al menos el campo CABINA");
+                }
+                
             }
         }
 </script>

@@ -129,7 +129,7 @@
           <Property Name="IMPORTE_FINAL" Type="varchar" MaxLength="50" />
           <Property Name="IMPORTE_SIN_IVA" Type="varchar" MaxLength="50" />
           <Property Name="IMPORTE_PRODUCTO" Type="varchar" MaxLength="50" />
-          <Property Name="NOMBRE_PRODUCTO" Type="int" />
+          <Property Name="NOMBRE_PRODUCTO" Type="varchar" MaxLength="50" />
           <Property Name="TIPO_MATERIAL" Type="varchar" MaxLength="50" />
           <Property Name="COD_CONTA_PROD" Type="int" />
           <Property Name="RAZON_SOCIAL_CLIENTE" Type="varchar" MaxLength="50" />
@@ -387,59 +387,6 @@
           <Property Name="FORMA_DE_PAGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CODIGO_CONTABLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="HISTORICOS">
-          <Key>
-            <PropertyRef Name="ID_HISTORICO" />
-          </Key>
-          <Property Name="ID_HISTORICO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NUM_ALBARAN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MAT_CABINA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MAT_REMOLQUE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FECHA_ENTRADA" Type="DateTime" Precision="3" />
-          <Property Name="FECHA_SALIDA" Type="DateTime" Precision="3" />
-          <Property Name="PESO_ENTRADA" Type="Int32" />
-          <Property Name="PESO_SALIDA" Type="Int32" />
-          <Property Name="NETO" Type="Int32" />
-          <Property Name="ORIGEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DESTINO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FORMA_PAGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IVA_APLICABLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IMPORTE_FINAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IMPORTE_SIN_IVA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IMPORTE_PRODUCTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NOMBRE_PRODUCTO" Type="Int32" />
-          <Property Name="TIPO_MATERIAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="COD_CONTA_PROD" Type="Int32" />
-          <Property Name="RAZON_SOCIAL_CLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CIF_CLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DIRECCION_CLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TLF_CLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UBICACION_CLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="COD_CONTA_CLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RAZON_SOCIAL_PROVEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CIF_PROVEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DIRECCION_PROVEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TLF_PROVEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UBICACION_PROVEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="COD_CONTA_PROVEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RAZON_SOCIAL_AGENCIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CIF_AGENCIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DIRECCION_AGENCIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TLF_AGENCIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UBICACION_AGENCIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="COD_CONTA_AGENCIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RAZON_SOCIAL_POSEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CIF_POSEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DIRECCION_POSEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TLF_POSEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UBICACION_POSEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="COD_CONTA_POSEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NOMBRE_CONDUCTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NIF_CONDUCTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DIRECCION_CONDUCTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TLF_CONDUCTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UBICACION_CONDUCTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="PRODUCTOS">
           <Key>
             <PropertyRef Name="ID_PRODUCTO" />
@@ -529,7 +476,6 @@
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
           <EntitySet Name="CONFIGURACIONES" EntityType="Self.CONFIGURACIONES" />
           <EntitySet Name="EMPRESAS" EntityType="Self.EMPRESAS" />
-          <EntitySet Name="HISTORICOS" EntityType="Self.HISTORICOS" />
           <EntitySet Name="PRODUCTOS" EntityType="Self.PRODUCTOS" />
           <EntitySet Name="TRANSITO_ACTUALES" EntityType="Self.TRANSITO_ACTUALES" />
           <EntitySet Name="VEHICULOS" EntityType="Self.VEHICULOS" />
@@ -546,6 +492,7 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
           <EntitySet Name="CONDUCTORES" EntityType="openBasculaNet2017Model.CONDUCTORES" />
+          <EntitySet Name="HISTORICOS" EntityType="openBasculaNet2017Model.HISTORICOS" />
         </EntityContainer>
         <EntityType Name="CONDUCTORES">
           <Key>
@@ -563,6 +510,59 @@
           <Property Name="PROVINCIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TELEFONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HISTORICOS">
+          <Key>
+            <PropertyRef Name="ID_HISTORICO" />
+          </Key>
+          <Property Name="ID_HISTORICO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NUM_ALBARAN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MAT_CABINA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MAT_REMOLQUE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_ENTRADA" Type="DateTime" Precision="3" />
+          <Property Name="FECHA_SALIDA" Type="DateTime" Precision="3" />
+          <Property Name="PESO_ENTRADA" Type="Int32" />
+          <Property Name="PESO_SALIDA" Type="Int32" />
+          <Property Name="NETO" Type="Int32" />
+          <Property Name="ORIGEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESTINO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FORMA_PAGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IVA_APLICABLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IMPORTE_FINAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IMPORTE_SIN_IVA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IMPORTE_PRODUCTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE_PRODUCTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_MATERIAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COD_CONTA_PROD" Type="Int32" />
+          <Property Name="RAZON_SOCIAL_CLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CIF_CLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION_CLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TLF_CLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UBICACION_CLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COD_CONTA_CLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RAZON_SOCIAL_PROVEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CIF_PROVEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION_PROVEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TLF_PROVEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UBICACION_PROVEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COD_CONTA_PROVEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RAZON_SOCIAL_AGENCIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CIF_AGENCIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION_AGENCIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TLF_AGENCIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UBICACION_AGENCIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COD_CONTA_AGENCIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RAZON_SOCIAL_POSEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CIF_POSEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION_POSEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TLF_POSEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UBICACION_POSEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COD_CONTA_POSEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE_CONDUCTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NIF_CONDUCTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION_CONDUCTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TLF_CONDUCTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UBICACION_CONDUCTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -653,60 +653,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="HISTORICOS">
-            <EntityTypeMapping TypeName="openBasculaNet2017Model.HISTORICOS">
-              <MappingFragment StoreEntitySet="HISTORICOS">
-                <ScalarProperty Name="ID_HISTORICO" ColumnName="ID_HISTORICO" />
-                <ScalarProperty Name="NUM_ALBARAN" ColumnName="NUM_ALBARAN" />
-                <ScalarProperty Name="MAT_CABINA" ColumnName="MAT_CABINA" />
-                <ScalarProperty Name="MAT_REMOLQUE" ColumnName="MAT_REMOLQUE" />
-                <ScalarProperty Name="FECHA_ENTRADA" ColumnName="FECHA_ENTRADA" />
-                <ScalarProperty Name="FECHA_SALIDA" ColumnName="FECHA_SALIDA" />
-                <ScalarProperty Name="PESO_ENTRADA" ColumnName="PESO_ENTRADA" />
-                <ScalarProperty Name="PESO_SALIDA" ColumnName="PESO_SALIDA" />
-                <ScalarProperty Name="NETO" ColumnName="NETO" />
-                <ScalarProperty Name="ORIGEN" ColumnName="ORIGEN" />
-                <ScalarProperty Name="DESTINO" ColumnName="DESTINO" />
-                <ScalarProperty Name="FORMA_PAGO" ColumnName="FORMA_PAGO" />
-                <ScalarProperty Name="IVA_APLICABLE" ColumnName="IVA_APLICABLE" />
-                <ScalarProperty Name="IMPORTE_FINAL" ColumnName="IMPORTE_FINAL" />
-                <ScalarProperty Name="IMPORTE_SIN_IVA" ColumnName="IMPORTE_SIN_IVA" />
-                <ScalarProperty Name="IMPORTE_PRODUCTO" ColumnName="IMPORTE_PRODUCTO" />
-                <ScalarProperty Name="NOMBRE_PRODUCTO" ColumnName="NOMBRE_PRODUCTO" />
-                <ScalarProperty Name="TIPO_MATERIAL" ColumnName="TIPO_MATERIAL" />
-                <ScalarProperty Name="COD_CONTA_PROD" ColumnName="COD_CONTA_PROD" />
-                <ScalarProperty Name="RAZON_SOCIAL_CLIENTE" ColumnName="RAZON_SOCIAL_CLIENTE" />
-                <ScalarProperty Name="CIF_CLIENTE" ColumnName="CIF_CLIENTE" />
-                <ScalarProperty Name="DIRECCION_CLIENTE" ColumnName="DIRECCION_CLIENTE" />
-                <ScalarProperty Name="TLF_CLIENTE" ColumnName="TLF_CLIENTE" />
-                <ScalarProperty Name="UBICACION_CLIENTE" ColumnName="UBICACION_CLIENTE" />
-                <ScalarProperty Name="COD_CONTA_CLIENTE" ColumnName="COD_CONTA_CLIENTE" />
-                <ScalarProperty Name="RAZON_SOCIAL_PROVEEDOR" ColumnName="RAZON_SOCIAL_PROVEEDOR" />
-                <ScalarProperty Name="CIF_PROVEEDOR" ColumnName="CIF_PROVEEDOR" />
-                <ScalarProperty Name="DIRECCION_PROVEEDOR" ColumnName="DIRECCION_PROVEEDOR" />
-                <ScalarProperty Name="TLF_PROVEEDOR" ColumnName="TLF_PROVEEDOR" />
-                <ScalarProperty Name="UBICACION_PROVEEDOR" ColumnName="UBICACION_PROVEEDOR" />
-                <ScalarProperty Name="COD_CONTA_PROVEEDOR" ColumnName="COD_CONTA_PROVEEDOR" />
-                <ScalarProperty Name="RAZON_SOCIAL_AGENCIA" ColumnName="RAZON_SOCIAL_AGENCIA" />
-                <ScalarProperty Name="CIF_AGENCIA" ColumnName="CIF_AGENCIA" />
-                <ScalarProperty Name="DIRECCION_AGENCIA" ColumnName="DIRECCION_AGENCIA" />
-                <ScalarProperty Name="TLF_AGENCIA" ColumnName="TLF_AGENCIA" />
-                <ScalarProperty Name="UBICACION_AGENCIA" ColumnName="UBICACION_AGENCIA" />
-                <ScalarProperty Name="COD_CONTA_AGENCIA" ColumnName="COD_CONTA_AGENCIA" />
-                <ScalarProperty Name="RAZON_SOCIAL_POSEEDOR" ColumnName="RAZON_SOCIAL_POSEEDOR" />
-                <ScalarProperty Name="CIF_POSEEDOR" ColumnName="CIF_POSEEDOR" />
-                <ScalarProperty Name="DIRECCION_POSEEDOR" ColumnName="DIRECCION_POSEEDOR" />
-                <ScalarProperty Name="TLF_POSEEDOR" ColumnName="TLF_POSEEDOR" />
-                <ScalarProperty Name="UBICACION_POSEEDOR" ColumnName="UBICACION_POSEEDOR" />
-                <ScalarProperty Name="COD_CONTA_POSEEDOR" ColumnName="COD_CONTA_POSEEDOR" />
-                <ScalarProperty Name="NOMBRE_CONDUCTOR" ColumnName="NOMBRE_CONDUCTOR" />
-                <ScalarProperty Name="NIF_CONDUCTOR" ColumnName="NIF_CONDUCTOR" />
-                <ScalarProperty Name="DIRECCION_CONDUCTOR" ColumnName="DIRECCION_CONDUCTOR" />
-                <ScalarProperty Name="TLF_CONDUCTOR" ColumnName="TLF_CONDUCTOR" />
-                <ScalarProperty Name="UBICACION_CONDUCTOR" ColumnName="UBICACION_CONDUCTOR" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PRODUCTOS">
             <EntityTypeMapping TypeName="openBasculaNet2017Model.PRODUCTOS">
               <MappingFragment StoreEntitySet="PRODUCTOS">
@@ -782,6 +728,60 @@
                 <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
                 <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
                 <ScalarProperty Name="ID_CONDUCTOR" ColumnName="ID_CONDUCTOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HISTORICOS">
+            <EntityTypeMapping TypeName="openBasculaNet2017Model.HISTORICOS">
+              <MappingFragment StoreEntitySet="HISTORICOS">
+                <ScalarProperty Name="UBICACION_CONDUCTOR" ColumnName="UBICACION_CONDUCTOR" />
+                <ScalarProperty Name="TLF_CONDUCTOR" ColumnName="TLF_CONDUCTOR" />
+                <ScalarProperty Name="DIRECCION_CONDUCTOR" ColumnName="DIRECCION_CONDUCTOR" />
+                <ScalarProperty Name="NIF_CONDUCTOR" ColumnName="NIF_CONDUCTOR" />
+                <ScalarProperty Name="NOMBRE_CONDUCTOR" ColumnName="NOMBRE_CONDUCTOR" />
+                <ScalarProperty Name="COD_CONTA_POSEEDOR" ColumnName="COD_CONTA_POSEEDOR" />
+                <ScalarProperty Name="UBICACION_POSEEDOR" ColumnName="UBICACION_POSEEDOR" />
+                <ScalarProperty Name="TLF_POSEEDOR" ColumnName="TLF_POSEEDOR" />
+                <ScalarProperty Name="DIRECCION_POSEEDOR" ColumnName="DIRECCION_POSEEDOR" />
+                <ScalarProperty Name="CIF_POSEEDOR" ColumnName="CIF_POSEEDOR" />
+                <ScalarProperty Name="RAZON_SOCIAL_POSEEDOR" ColumnName="RAZON_SOCIAL_POSEEDOR" />
+                <ScalarProperty Name="COD_CONTA_AGENCIA" ColumnName="COD_CONTA_AGENCIA" />
+                <ScalarProperty Name="UBICACION_AGENCIA" ColumnName="UBICACION_AGENCIA" />
+                <ScalarProperty Name="TLF_AGENCIA" ColumnName="TLF_AGENCIA" />
+                <ScalarProperty Name="DIRECCION_AGENCIA" ColumnName="DIRECCION_AGENCIA" />
+                <ScalarProperty Name="CIF_AGENCIA" ColumnName="CIF_AGENCIA" />
+                <ScalarProperty Name="RAZON_SOCIAL_AGENCIA" ColumnName="RAZON_SOCIAL_AGENCIA" />
+                <ScalarProperty Name="COD_CONTA_PROVEEDOR" ColumnName="COD_CONTA_PROVEEDOR" />
+                <ScalarProperty Name="UBICACION_PROVEEDOR" ColumnName="UBICACION_PROVEEDOR" />
+                <ScalarProperty Name="TLF_PROVEEDOR" ColumnName="TLF_PROVEEDOR" />
+                <ScalarProperty Name="DIRECCION_PROVEEDOR" ColumnName="DIRECCION_PROVEEDOR" />
+                <ScalarProperty Name="CIF_PROVEEDOR" ColumnName="CIF_PROVEEDOR" />
+                <ScalarProperty Name="RAZON_SOCIAL_PROVEEDOR" ColumnName="RAZON_SOCIAL_PROVEEDOR" />
+                <ScalarProperty Name="COD_CONTA_CLIENTE" ColumnName="COD_CONTA_CLIENTE" />
+                <ScalarProperty Name="UBICACION_CLIENTE" ColumnName="UBICACION_CLIENTE" />
+                <ScalarProperty Name="TLF_CLIENTE" ColumnName="TLF_CLIENTE" />
+                <ScalarProperty Name="DIRECCION_CLIENTE" ColumnName="DIRECCION_CLIENTE" />
+                <ScalarProperty Name="CIF_CLIENTE" ColumnName="CIF_CLIENTE" />
+                <ScalarProperty Name="RAZON_SOCIAL_CLIENTE" ColumnName="RAZON_SOCIAL_CLIENTE" />
+                <ScalarProperty Name="COD_CONTA_PROD" ColumnName="COD_CONTA_PROD" />
+                <ScalarProperty Name="TIPO_MATERIAL" ColumnName="TIPO_MATERIAL" />
+                <ScalarProperty Name="NOMBRE_PRODUCTO" ColumnName="NOMBRE_PRODUCTO" />
+                <ScalarProperty Name="IMPORTE_PRODUCTO" ColumnName="IMPORTE_PRODUCTO" />
+                <ScalarProperty Name="IMPORTE_SIN_IVA" ColumnName="IMPORTE_SIN_IVA" />
+                <ScalarProperty Name="IMPORTE_FINAL" ColumnName="IMPORTE_FINAL" />
+                <ScalarProperty Name="IVA_APLICABLE" ColumnName="IVA_APLICABLE" />
+                <ScalarProperty Name="FORMA_PAGO" ColumnName="FORMA_PAGO" />
+                <ScalarProperty Name="DESTINO" ColumnName="DESTINO" />
+                <ScalarProperty Name="ORIGEN" ColumnName="ORIGEN" />
+                <ScalarProperty Name="NETO" ColumnName="NETO" />
+                <ScalarProperty Name="PESO_SALIDA" ColumnName="PESO_SALIDA" />
+                <ScalarProperty Name="PESO_ENTRADA" ColumnName="PESO_ENTRADA" />
+                <ScalarProperty Name="FECHA_SALIDA" ColumnName="FECHA_SALIDA" />
+                <ScalarProperty Name="FECHA_ENTRADA" ColumnName="FECHA_ENTRADA" />
+                <ScalarProperty Name="MAT_REMOLQUE" ColumnName="MAT_REMOLQUE" />
+                <ScalarProperty Name="MAT_CABINA" ColumnName="MAT_CABINA" />
+                <ScalarProperty Name="NUM_ALBARAN" ColumnName="NUM_ALBARAN" />
+                <ScalarProperty Name="ID_HISTORICO" ColumnName="ID_HISTORICO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

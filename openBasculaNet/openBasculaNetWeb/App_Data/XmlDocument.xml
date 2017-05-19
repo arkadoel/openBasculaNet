@@ -26,6 +26,14 @@
             <param name="fechaEntrada"></param>
             <returns></returns>
         </member>
+        <member name="M:openBasculaNetWeb.API.openBasculaController.GuardarEnHistorico(openBasculaNet.Core.Structures.TRANSITO_ACTUALES,System.String)">
+            <summary>
+            Guarda los datos de un transito en base de datos
+            </summary>
+            <param name="jsonTransito"></param>
+            <param name="fechaEntrada"></param>
+            <returns></returns>
+        </member>
         <member name="M:openBasculaNetWeb.API.openBasculaController.VerTransito(System.String,System.Nullable{System.Int32})">
             <summary>
             Carga un transito desde base de datos
@@ -615,6 +623,13 @@
         <member name="M:openBasculaNetWeb.Reports.Index.Page_Load(System.Object,System.EventArgs)">
             <summary>
             Inicio de la pagina
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:openBasculaNetWeb.Reports.Index.btnExportar_Click(System.Object,System.EventArgs)">
+            <summary>
+            
             </summary>
             <param name="sender"></param>
             <param name="e"></param>

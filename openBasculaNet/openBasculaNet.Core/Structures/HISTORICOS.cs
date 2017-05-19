@@ -30,7 +30,7 @@ namespace openBasculaNet.Core.Structures
         public string IMPORTE_FINAL { get; set; }
         public string IMPORTE_SIN_IVA { get; set; }
         public string IMPORTE_PRODUCTO { get; set; }
-        public Nullable<int> NOMBRE_PRODUCTO { get; set; }
+        public string NOMBRE_PRODUCTO { get; set; }
         public string TIPO_MATERIAL { get; set; }
         public Nullable<int> COD_CONTA_PROD { get; set; }
         public string RAZON_SOCIAL_CLIENTE { get; set; }
