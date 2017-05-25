@@ -81,6 +81,9 @@ namespace openBasculaNet.BusinessLogic.openBascula
                     historico.NUM_ALBARAN = transitoDB.NUM_ALBARAN;
                     historico.MAT_CABINA = transitoDB.MAT_CABINA;
                     historico.MAT_REMOLQUE = transitoDB.MAT_REMOLQUE;
+                    historico.PESO_ENTRADA = transitoDB.PESO_ENTRADA;
+                    historico.PESO_SALIDA = transitoDB.PESO_SALIDA;
+                    historico.NETO = transitoDB.NETO;
                         
                     historico.ORIGEN = transitoDB.ORIGEN;
                     historico.DESTINO = transitoDB.DESTINO;
@@ -217,6 +220,24 @@ namespace openBasculaNet.BusinessLogic.openBascula
             if (manzana.LicenciaActiva() && id.HasValue)
             {
                 var query = obnDB.Tablas.PRODUCTOS.Where(x => (x.ID_PRODUCTO == id)).FirstOrDefault();
+
+                if (query != null) obj = query;
+            }
+            return obj;
+        }
+
+        /// <summary>
+        /// obtiene un historico
+        /// </summary>
+        /// <param name="idHistorico"></param>
+        /// <returns></returns>
+        public static HISTORICOS ObtenerHistoricoPorID(int idHistorico)
+        {
+            HISTORICOS obj = new HISTORICOS();
+
+            if (manzana.LicenciaActiva())
+            {
+                var query = obnDB.Tablas.HISTORICOS.Where(x => (x.ID_HISTORICO == idHistorico)).FirstOrDefault();
 
                 if (query != null) obj = query;
             }

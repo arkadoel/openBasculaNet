@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
 using Microsoft.Reporting.WebForms;
+using openBasculaNet.Core.Structures;
+using openBasculaNet.BusinessLogic;
+using openBasculaNet.BusinessLogic.openBascula;
 
 namespace openBasculaNetWeb.Reports
 {
@@ -137,7 +140,7 @@ namespace openBasculaNetWeb.Reports
             Response.Clear();
             Response.ClearHeaders();
             Response.ClearContent();
-            Response.AddHeader("Content-Disposition", "attachment; filename=Datos_paciente.pdf");
+            Response.AddHeader("Content-Disposition", "attachment; filename=InformeAlbaran.pdf");
             Response.AddHeader("Content-Length", finfo.Length.ToString());
             Response.ContentType = "application/pdf";
             Response.Flush();
@@ -171,7 +174,7 @@ namespace openBasculaNetWeb.Reports
             Response.Clear();
             Response.ClearHeaders();
             Response.ClearContent();
-            Response.AddHeader("Content-Disposition", "attachment; filename=Datos_paciente.docx");
+            Response.AddHeader("Content-Disposition", "attachment; filename=InformeAlbaran.docx");
             Response.AddHeader("Content-Length", finfo.Length.ToString());
             Response.ContentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
             Response.Flush();
@@ -206,7 +209,7 @@ namespace openBasculaNetWeb.Reports
             Response.Clear();
             Response.ClearHeaders();
             Response.ClearContent();
-            Response.AddHeader("Content-Disposition", "attachment; filename=Datos_paciente.doc");
+            Response.AddHeader("Content-Disposition", "attachment; filename=InformeAlbaran.doc");
             Response.AddHeader("Content-Length", finfo.Length.ToString());
             Response.ContentType = "application/ms-word";
             Response.Flush();
@@ -229,9 +232,27 @@ namespace openBasculaNetWeb.Reports
                     informe.ReportPath = ReportPath;
                     informe.ViewName = ViewName;
                     informe.IdHistorico = Convert.ToInt32(Request.Params["idHistorico"]);
+
+                    HISTORICOS hist = Logic_Transitos.ObtenerHistoricoPorID(informe.IdHistorico);
+
                     informe.ParametrosReporte = new Dictionary<string, string>()
                     {
-                        {"startDate" , "32" }
+                        { "MAT_CABINA", hist.MAT_CABINA },
+                        { "MAT_REMOLQUE", hist.MAT_REMOLQUE },
+                        { "CONDUCTOR", hist.NOMBRE_CONDUCTOR },
+                        { "PRODUCTO", hist.NOMBRE_PRODUCTO },
+                        { "CLIENTE", hist.RAZON_SOCIAL_CLIENTE },
+                        { "PROVEEDOR", hist.RAZON_SOCIAL_PROVEEDOR },
+                        { "POSEEDOR", hist.RAZON_SOCIAL_POSEEDOR },
+                        { "ORIGEN", hist.ORIGEN },
+                        { "DESTINO", hist.DESTINO },
+                        { "AGENCIA", hist.RAZON_SOCIAL_AGENCIA },
+                        { "ENTRADA", hist.FECHA_ENTRADA == null? "":  FormatearFecha(hist.FECHA_ENTRADA.Value)},
+                        { "SALIDA", hist.FECHA_SALIDA== null? "": FormatearFecha(hist.FECHA_SALIDA.Value) },
+                        { "KG_ENTRADA", hist.PESO_ENTRADA.ToString() },
+                        { "KG_SALIDA", hist.PESO_SALIDA.ToString() },
+                        { "NETO", hist.NETO.ToString() }
+
                     };
                     parametrosInforme = informe.ParametrosReporte;
 
@@ -239,6 +260,27 @@ namespace openBasculaNetWeb.Reports
 
                 default: break;
             }
+        }
+
+        private static string FormatearFecha(DateTime fecha)
+        {
+            List<string> meses = new List<string>()
+            {
+                "Enero",
+                "Febrero",
+                "Marzo",
+                "Abril",
+                "Mayo",
+                "Junio",
+                "Julio",
+                "Agosto",
+                "Septiembre",
+                "Octubre",
+                "Noviembre",
+                "Diciembre"
+            };
+            return string.Format("{0}-{1}-{2} {3}:{4}:{5}", fecha.Day, meses[fecha.Month], fecha.Year,
+                                                            fecha.Hour, fecha.Minute, fecha.Second);
         }
     }
 }
